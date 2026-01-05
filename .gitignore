@@ -2,3 +2,5 @@
 
 viewer_settings.json
 build/
+.vscode/
+.claude/

@@ -1,5 +1,8 @@
 # Nimble Encounter Builder
 
+## Note
+This app was built with heavy use of AI tools. I won't pretend that I know exactly how everything works, but I do understand the structure. With that said, if you create a pull request I may struggle with reviewing and approving. Please be patient with me.
+
 Nimble Encounter Builder is a fast, table-first combat tracker and encounter builder for TTRPGs. It focuses on quick in-session edits, clear status visibility, and light data management.
 
 ## Highlights
