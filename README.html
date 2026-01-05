@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nimble Encounter Builder - User Guide</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #e0e0e0;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #1e1e1e;
+        }
+        h1 {
+            color: #61afef;
+            border-bottom: 3px solid #528bff;
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: #98c379;
+            border-bottom: 2px solid #4a9960;
+            padding-bottom: 5px;
+            margin-top: 30px;
+        }
+        h3 {
+            color: #c678dd;
+            margin-top: 20px;
+        }
+        .tab-section {
+            background-color: #2d2d30;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+            border: 1px solid #3e3e42;
+        }
+        .feature {
+            margin: 15px 0;
+            padding-left: 20px;
+        }
+        .feature-title {
+            font-weight: bold;
+            color: #61afef;
+        }
+        .tip {
+            background-color: #1e3a5f;
+            border-left: 4px solid #528bff;
+            padding: 10px 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+            color: #d4e4ff;
+        }
+        .warning {
+            background-color: #4a3c1e;
+            border-left: 4px solid #d19a66;
+            padding: 10px 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+            color: #ffd699;
+        }
+        .keyboard-shortcut {
+            background-color: #3e3e42;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            color: #d7ba7d;
+            border: 1px solid #4e4e52;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+        th, td {
+            border: 1px solid #3e3e42;
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #264f78;
+            color: #e0e0e0;
+            font-weight: 600;
+        }
+        tr:nth-child(even) {
+            background-color: #252526;
+        }
+        tr:nth-child(odd) {
+            background-color: #2d2d30;
+        }
+        code {
+            background-color: #1e1e1e;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            color: #d7ba7d;
+            border: 1px solid #3e3e42;
+        }
+        .status-indicator {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-right: 5px;
+        }
+        .status-bloodied { background-color: #f39c12; }
+        .status-critical { background-color: #e74c3c; }
+        .status-dead { background-color: #95a5a6; }
+        .status-healthy { background-color: #2ecc71; }
+
+        ul, ol {
+            color: #e0e0e0;
+        }
+
+        strong {
+            color: #e8b339;
+        }
+    </style>
+</head>
+<body>
+    <h1>Nimble Encounter Builder - User Guide</h1>
+
+    <div class="tab-section">
+        <h2>Getting Started</h2>
+        <p>Nimble Encounter Builder is a combat management tool designed for tabletop RPG sessions. It helps you track initiative, hit points, conditions, and more for both monsters and heroes.</p>
+
+        <div class="tip">
+            <strong>Quick Start:</strong> On first launch, select a config location. If you skip, the app prompts for a base folder and creates <code>data/Encounters</code>, <code>data/Heroes</code>, and <code>data/Combat Logs</code>. After that, set your monster vault path in Config and click <strong>Scan Vault</strong> in Bestiary.
+        </div>
+    </div>
+
+    <div class="tab-section">
+        <h2>Combat Tab</h2>
+        <p>The main combat tracking interface where you manage active combatants during encounters.</p>
+
+        <h3>Table Columns</h3>
+        <table>
+            <tr>
+                <th>Column</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td><strong>Act</strong></td>
+                <td>Checkbox to mark if the combatant is currently active in combat.</td>
+            </tr>
+            <tr>
+                <td><strong>Heal</strong></td>
+                <td>Heal button - click to apply healing to this combatant.</td>
+            </tr>
+            <tr>
+                <td><strong>Name</strong></td>
+                <td>Combatant's name. Click to select and view stat block in the right panel.</td>
+            </tr>
+            <tr>
+                <td><strong>Hurt</strong></td>
+                <td>Hurt button - click to apply damage to this combatant.</td>
+            </tr>
+            <tr>
+                <td><strong>Mk</strong></td>
+                <td>Map marker - shows marker number with colored background for tracking on battle maps.</td>
+            </tr>
+            <tr>
+                <td><strong>Con</strong></td>
+                <td>Concentrating checkbox - check when the combatant is concentrating on a spell or effect.</td>
+            </tr>
+            <tr>
+                <td><strong>Conds</strong></td>
+                <td>Displays active conditions as colored tags (e.g., Blinded, Stunned, Prone).</td>
+            </tr>
+            <tr>
+                <td><strong>HP</strong></td>
+                <td>Current hit points. Color-coded: <span class="status-indicator status-healthy"></span>Healthy, <span class="status-indicator status-bloodied"></span>Bloodied, <span class="status-indicator status-critical"></span>Critical, <span class="status-indicator status-dead"></span>Dead/Dying</td>
+            </tr>
+            <tr>
+                <td><strong>Tmp</strong></td>
+                <td>Temporary hit points. These are lost first before regular HP.</td>
+            </tr>
+            <tr>
+                <td><strong>Max</strong></td>
+                <td>Maximum hit points for this combatant.</td>
+            </tr>
+        </table>
+
+        <h3>Combat Controls</h3>
+        <div class="feature">
+            <span class="feature-title">Add Combatant:</span> Manually add a monster or NPC to the combat.
+        </div>
+        <div class="feature">
+            <span class="feature-title">Delete Selected:</span> Remove selected combatants from combat. Hold <span class="keyboard-shortcut">Ctrl</span> to select multiple rows.
+        </div>
+        <div class="feature">
+            <span class="feature-title">Clear All:</span> Remove all combatants from the combat table (does not affect saved encounters).
+        </div>
+        <div class="feature">
+            <span class="feature-title">Set Color:</span> Assign map markers to selected combatants. Select multiple monsters (hold <span class="keyboard-shortcut">Ctrl</span> and click) and assign them the same color with sequential numbers.
+        </div>
+        <div class="feature">
+            <span class="feature-title">Reset Round:</span> Clears all damage, conditions, and temporary HP from all combatants.
+        </div>
+
+        <h3>HP Status Colors</h3>
+        <table>
+            <tr>
+                <th>Status</th>
+                <th>HP Range</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td><span class="status-indicator status-healthy"></span> Healthy</td>
+                <td>&gt; Bloodied Threshold</td>
+                <td>Green HP text - combatant is at full or high health</td>
+            </tr>
+            <tr>
+                <td><span class="status-indicator status-bloodied"></span> Bloodied</td>
+                <td>&gt;= Bloodied % but &gt; Critical %</td>
+                <td>Orange HP text - combatant is injured but still fighting</td>
+            </tr>
+            <tr>
+                <td><span class="status-indicator status-critical"></span> Critical/Last Stand</td>
+                <td>&gt;= Critical % but &gt; 0</td>
+                <td>Red HP text - combatant is in critical danger</td>
+            </tr>
+            <tr>
+                <td><span class="status-indicator status-dead"></span> Dying/Dead</td>
+                <td>0 HP</td>
+                <td>Purple Conds field - combatant is unconscious, dying, or dead</td>
+            </tr>
+        </table>
+
+        <div class="tip">
+            <strong>Tip:</strong> You can configure HP thresholds in the Config tab under "HP Thresholds". Set different values for monsters and heroes.
+        </div>
+
+        <h3>Stat Block Preview</h3>
+        <p>Click any combatant in the table to view their full stat block in the right panel. This is a handy reference for abilities, attacks, and special features during combat.</p>
+
+        <h3>Loot Display</h3>
+        <p>The bottom panel shows loot drops from defeated monsters. You can click on combatants at 0 HP to view their loot information.</p>
+    </div>
+
+    <div class="tab-section">
+        <h2>Heroes Tab</h2>
+        <p>Manage your party of player characters.</p>
+
+        <h3>Hero Management</h3>
+        <div class="feature">
+            <span class="feature-title">Add Hero:</span> Create a new hero with name, player name, level, and HP.
+        </div>
+        <div class="feature">
+            <span class="feature-title">Edit Hero:</span> Double-click a hero's name to edit their details.
+        </div>
+        <div class="feature">
+            <span class="feature-title">Delete Hero:</span> Remove selected heroes from the party.
+        </div>
+
+        <h3>Party File Management</h3>
+        <div class="feature">
+            <span class="feature-title">Load Party:</span> Load a saved party file (JSON format). Heroes are added to combat automatically.
+        </div>
+        <div class="feature">
+            <span class="feature-title">Save Party:</span> Save current heroes to a JSON file for reuse in future sessions.
+        </div>
+
+        <div class="tip">
+            <strong>Tip:</strong> Save your party file once and reload it at the start of each session. Hero HP and conditions can be reset as needed.
+        </div>
+    </div>
+
+    <div class="tab-section">
+        <h2>Bestiary Tab</h2>
+        <p>Build and manage encounters using monsters from your vault.</p>
+
+        <h3>Monster Vault</h3>
+        <p>The Monster Vault is your library of monster templates. These are loaded from JSON files containing monster stat blocks.</p>
+
+        <div class="feature">
+            <span class="feature-title">Scan Vault:</span> Load monsters from the vault path specified in Config. The path can include multiple JSON files (multi-select) and will merge them into one library.</div>
+
+        <h3>Building Encounters</h3>
+        <div class="feature">
+            <span class="feature-title">Adding Monsters:</span> Select monsters from the vault list and click "Add to Encounter". Monsters are automatically added to combat when you add them to the encounter.
+        </div>
+        <div class="feature">
+            <span class="feature-title">Edit Monster:</span> Double-click a monster's name in the encounter list to edit its stats. Changes only affect this instance.
+        </div>
+        <div class="feature">
+            <span class="feature-title">Remove from Encounter:</span> Select monsters and click "Remove" to delete them from the encounter.
+        </div>
+        <div class="feature">
+            <span class="feature-title">Double-Click Functions:</span> Double-click a monster's name to edit details, or double-click the level field to quickly adjust monster level (supports fractional levels).
+        </div>
+
+        <h3>Encounter File Management</h3>
+        <div class="feature">
+            <span class="feature-title">New Encounter:</span> Clear the current encounter to start fresh.
+        </div>
+        <div class="feature">
+            <span class="feature-title">Load Encounter:</span> Load a previously saved encounter file (JSON format).
+        </div>
+        <div class="feature">
+            <span class="feature-title">Save Encounter:</span> Save the current encounter for future use.
+        </div>
+
+        <div class="warning">
+            <strong>Auto-Refresh Feature:</strong> When loading an encounter, you'll be prompted to refresh monster data from the vault. This updates monsters with the latest stats from your library. Enable "Auto-refresh" in Config to skip this prompt.
+        </div>
+
+        <h3>Encounter Difficulty</h3>
+        <p>The encounter difficulty label appears at the bottom of the Bestiary tab and is calculated based on the total encounter strength compared to your party. The difficulty is color-coded to show the challenge level:</p>
+        <ul>
+            <li><strong>Easy</strong> - Green - The party should handle this without much difficulty</li>
+            <li><strong>Medium</strong> - Yellow/Orange - A moderate challenge with some risk</li>
+            <li><strong>Hard</strong> - Orange - A tough fight that will test the party</li>
+            <li><strong>Deadly</strong> - Red - Very dangerous, potential for character death</li>
+            <li><strong>Very Deadly</strong> - Purple - Extremely dangerous encounter</li>
+        </ul>
+        <p>The difficulty calculations are based on monster levels and party composition, using thresholds you can customize in the Config tab.</p>
+    </div>
+
+    <div class="tab-section">
+        <h2>Config Tab</h2>
+        <p>Customize the application settings and appearance.</p>
+
+        <h3>HP Thresholds</h3>
+        <p>Set when combatants are considered Bloodied or in Critical condition as a percentage of max HP.</p>
+        <ul>
+            <li><strong>Monster Bloodied:</strong> Default 50% - monsters show orange background</li>
+            <li><strong>Hero Bloodied:</strong> Default 50% - heroes show orange background</li>
+            <li><strong>Monster Critical:</strong> Default 25% - red background warning</li>
+            <li><strong>Hero Critical:</strong> Default 25% - red background warning</li>
+        </ul>
+
+        <h3>Map Markers</h3>
+        <div class="feature">
+            <span class="feature-title">Color Palette:</span> Visual list of available marker colors. These are used to identify monsters on battle maps.
+        </div>
+        <div class="feature">
+            <span class="feature-title">Add Color:</span> Click the color preview box to open a color picker, then click "Add to Palette" to add custom colors.
+        </div>
+        <div class="feature">
+            <span class="feature-title">Starting Number:</span> First number to use when auto-assigning markers (default: 1).
+        </div>
+
+        <h3>Logging Options</h3>
+        <p>Control what events are logged to the combat log:</p>
+        <ul>
+            <li><strong>Log Damage:</strong> Record when damage is dealt</li>
+            <li><strong>Log Healing:</strong> Record healing events</li>
+            <li><strong>Log Deaths:</strong> Record when combatants reach 0 HP</li>
+            <li><strong>Log Conditions:</strong> Record condition changes</li>
+            <li><strong>Log Last Stand:</strong> Record when combatants enter critical HP range</li>
+        </ul>
+
+        <h3>Autosave</h3>
+        <div class="feature">
+            <span class="feature-title">Enable Autosave:</span> Automatically save combat state periodically.
+        </div>
+        <div class="feature">
+            <span class="feature-title">Autosave Path:</span> Location where autosave files are stored.
+        </div>
+
+        <h3>Paths & Files</h3>
+        <div class="feature">
+            <span class="feature-title">Monster Vault Path:</span> Location of your monster library JSON files. Use multi-select to add more than one file.
+        </div>
+        <div class="feature">
+            <span class="feature-title">Obsidian Vault Path:</span> Set the root directory of your Obsidian vault. When configured, all folder paths become relative to this vault, making it easy to organize your campaign data in one location.
+        </div>
+        <div class="feature">
+            <span class="feature-title">Encounter Folder:</span> Default location for saving/loading encounters. Can be absolute or relative to the Obsidian vault.
+        </div>
+        <div class="feature">
+            <span class="feature-title">Party Folder:</span> Default location for saving/loading party files. Can be absolute or relative to the Obsidian vault.
+        </div>
+        <div class="feature">
+            <span class="feature-title">Combat Log Folder:</span> Location where combat logs are saved. Can be absolute or relative to the Obsidian vault.
+        </div>
+        <div class="feature">
+            <span class="feature-title">Config File:</span> Current configuration file being used. The path is saved in <code>config_location.json</code> in the app folder.
+        </div>
+
+        <div class="tip">
+            <strong>Obsidian Integration:</strong> If you use Obsidian for campaign notes, setting the vault path allows you to keep all your encounter files, party data, and combat logs alongside your notes. See OBSIDIAN_VAULT_INTEGRATION.md for detailed setup instructions.
+        </div>
+
+        <h3>Monster Vault Options</h3>
+        <div class="feature">
+            <span class="feature-title">Auto-refresh on Encounter Load:</span> When checked, automatically updates monster stats from vault when loading encounters without prompting.
+        </div>
+
+        <h3>Table Appearance</h3>
+        <p>Customize column widths and font sizes for the Heroes and Combat tables to fit your screen.</p>
+
+        <h3>Saving Configuration</h3>
+        <div class="feature">
+            <span class="feature-title">Save Config:</span> Quick save to the current config file. A timestamp message confirms the save.
+        </div>
+        <div class="feature">
+            <span class="feature-title">Save As:</span> Save configuration to a new file (useful for multiple campaigns).
+        </div>
+        <div class="feature">
+            <span class="feature-title">Load Config:</span> Load a previously saved configuration file.
+        </div>
+        <div class="feature">
+            <span class="feature-title">Refresh UI:</span> Reload the interface with current settings (use after changing column widths or fonts).
+        </div>
+
+        <div class="tip">
+            <strong>Tip:</strong> The green status message below the buttons shows when config was last saved with a timestamp.
+        </div>
+    </div>
+
+    <div class="tab-section">
+        <h2>Vault Viewer Tab</h2>
+        <p>Scan folders of markdown and JSON to build monster libraries from your vault or notes.</p>
+
+        <div class="feature">
+            <span class="feature-title">Add Folder:</span> Add multiple input folders (useful when your vault content lives in different subfolders).
+        </div>
+        <div class="feature">
+            <span class="feature-title">Scan:</span> Parse the selected folders and build a monster list.
+        </div>
+        <div class="feature">
+            <span class="feature-title">Export:</span> Save the scanned monsters to JSON for use in Bestiary.
+        </div>
+    </div>
+
+    <div class="tab-section">
+        <h2>Conditions System</h2>
+        <p>Nimble uses D&D 5e-style conditions to track status effects on combatants.</p>
+
+        <h3>Available Conditions</h3>
+        <table>
+            <tr>
+                <th>Condition</th>
+                <th>Effect</th>
+            </tr>
+            <tr>
+                <td><strong>Blinded</strong></td>
+                <td>Can't see. Attacks against have advantage, its attacks have disadvantage.</td>
+            </tr>
+            <tr>
+                <td><strong>Charmed</strong></td>
+                <td>Sees charmer as an ally. Charmer has advantage on social interactions.</td>
+            </tr>
+            <tr>
+                <td><strong>Dazed</strong></td>
+                <td>Heroes lose one action; monsters can perform one less action.</td>
+            </tr>
+            <tr>
+                <td><strong>Deafened</strong></td>
+                <td>Can't hear and automatically fails hearing-based checks.</td>
+            </tr>
+            <tr>
+                <td><strong>Frightened</strong></td>
+                <td>Disadvantage when source of fear is nearby; speed halved moving toward source.</td>
+            </tr>
+            <tr>
+                <td><strong>Grappled</strong></td>
+                <td>Speed becomes 0. Attacks against have advantage.</td>
+            </tr>
+            <tr>
+                <td><strong>Hampered</strong></td>
+                <td>Movement or actions are reduced (general debuff category).</td>
+            </tr>
+            <tr>
+                <td><strong>Incapacitated</strong></td>
+                <td>Can't take actions or reactions. Attacks against have advantage.</td>
+            </tr>
+            <tr>
+                <td><strong>Invisible</strong></td>
+                <td>Can't be seen. Attacks against have disadvantage, its attacks have advantage.</td>
+            </tr>
+            <tr>
+                <td><strong>Paralyzed</strong></td>
+                <td>Incapacitated, can't move/speak, fails STR/DEX saves. Attacks have advantage and crit within 5ft.</td>
+            </tr>
+            <tr>
+                <td><strong>Petrified</strong></td>
+                <td>Turned to stone. Immune to most damage except massive force.</td>
+            </tr>
+            <tr>
+                <td><strong>Poisoned</strong></td>
+                <td>Disadvantage on attack rolls and ability checks.</td>
+            </tr>
+            <tr>
+                <td><strong>Prone</strong></td>
+                <td>Movement costs double. Disadvantage on attacks. Melee attacks against have advantage.</td>
+            </tr>
+            <tr>
+                <td><strong>Restrained</strong></td>
+                <td>Speed 0. Attacks against have advantage, its attacks have disadvantage, disadvantage on DEX saves.</td>
+            </tr>
+            <tr>
+                <td><strong>Riding</strong></td>
+                <td>Moves with mount. Missed attacks strike the mount.</td>
+            </tr>
+            <tr>
+                <td><strong>Slowed</strong></td>
+                <td>Speed halved during next turn.</td>
+            </tr>
+            <tr>
+                <td><strong>Stunned</strong></td>
+                <td>Incapacitated, can't move, barely speaks. Fails STR/DEX saves. Attacks against have advantage.</td>
+            </tr>
+            <tr>
+                <td><strong>Taunted</strong></td>
+                <td>Disadvantage on attacks except against the taunter.</td>
+            </tr>
+            <tr>
+                <td><strong>Unconscious</strong></td>
+                <td>Incapacitated, unaware, drops items, falls prone. Fails STR/DEX saves. Attacks crit within 5ft.</td>
+            </tr>
+        </table>
+
+        <div class="tip">
+            <strong>Note:</strong> HP-based statuses (Bloodied, Dying, Last Stand) are automatically tracked and do not appear in the conditions list.
+        </div>
+    </div>
+
+    <div class="tab-section">
+        <h2>Map Markers</h2>
+        <p>Map markers help you track which monster is which on your battle map or VTT.</p>
+
+        <h3>Assigning Markers</h3>
+        <ol>
+            <li>Select one or more monsters in the Combat table (hold <span class="keyboard-shortcut">Ctrl</span> to select multiple)</li>
+            <li>Click the "Set Color" button</li>
+            <li>Choose a color from the palette</li>
+            <li>Set the starting number</li>
+            <li>Click OK - monsters will be assigned sequential numbers with that color</li>
+        </ol>
+
+        <h3>Marker Display</h3>
+        <p>In the "Mk" column, you'll see the marker number with a colored background. For example:</p>
+        <ul>
+            <li>Red 1, Red 2, Red 3 for three goblins</li>
+            <li>Blue 1, Blue 2 for two orcs</li>
+            <li>Green 1 for the orc chief</li>
+        </ul>
+
+        <h3>Auto-Suggest Numbers</h3>
+        <p>When assigning markers, the dialog automatically suggests the next available number for the selected color, preventing duplicates.</p>
+    </div>
+
+    <div class="tab-section">
+        <h2>Workflow Tips</h2>
+
+        <h3>Starting a Session</h3>
+        <ol>
+            <li>Load your party file from the Heroes tab</li>
+            <li>Go to Bestiary tab and load your prepared encounter (or build one from the vault)</li>
+            <li>Monsters are automatically added to the Combat tab when you add them to an encounter</li>
+            <li>Assign map markers to monsters (optional but recommended)</li>
+            <li>Begin combat tracking!</li>
+        </ol>
+
+        <h3>During Combat</h3>
+        <ol>
+            <li>Click "Hurt" button to apply damage to a combatant</li>
+            <li>Click "Heal" button to apply healing to a combatant</li>
+            <li>Check "Act" boxes to mark combatants as active in combat</li>
+            <li>Use "Con" checkbox to mark when a combatant is concentrating on a spell or effect</li>
+            <li>Click on a combatant's name to view their stat block</li>
+            <li>Use "Reset Round" to clear all damage, conditions, and temporary HP when combat ends</li>
+        </ol>
+
+        <h3>Preparing Encounters</h3>
+        <ol>
+            <li>Scan your Monster Vault to load all available monsters</li>
+            <li>Build encounters in the Bestiary tab by adding monsters</li>
+            <li>Save encounters with descriptive names (e.g., "Goblin Ambush", "Dragon Lair")</li>
+            <li>Reload saved encounters for quick setup during sessions</li>
+        </ol>
+
+        <div class="tip">
+            <strong>Pro Tip:</strong> Create a separate config file for each campaign. This keeps your monster vaults, encounter folders, and party folders organized per campaign.
+        </div>
+    </div>
+
+    <div class="tab-section">
+        <h2>File Formats</h2>
+
+        <h3>Monster Vault JSON</h3>
+        <p>Monster library files use JSON format with fields like: name, level, hp, armor_class, abilities, attacks, etc. See the shared_statblock module for the complete schema.</p>
+
+        <h3>Encounter Files</h3>
+        <p>Saved encounters include the list of monsters, their HP, conditions, markers, and any instance-specific modifications.</p>
+
+        <h3>Party Files</h3>
+        <p>Party files store hero names, player names, levels, max HP, and current state. Load at session start to restore your party.</p>
+
+        <h3>Config Files</h3>
+        <p>Configuration is stored in JSON format with all your preferences: thresholds, paths, colors, logging options, and UI settings.</p>
+    </div>
+
+    <div class="tab-section">
+        <h2>Keyboard Shortcuts</h2>
+        <ul>
+            <li><span class="keyboard-shortcut">Ctrl + Click</span> - Select multiple table rows</li>
+            <li><span class="keyboard-shortcut">Double-Click Name</span> - Edit hero or monster details</li>
+            <li><span class="keyboard-shortcut">Click Name</span> - View stat block in preview panel</li>
+        </ul>
+    </div>
+
+    <div class="tab-section">
+        <h2>Troubleshooting</h2>
+
+        <div class="feature">
+            <span class="feature-title">Monster Vault Not Loading:</span>
+            <ul>
+                <li>Check that the vault path in Config points to JSON files</li>
+                <li>Use multi-select if your vault is split across files</li>
+                <li>Click "Scan Vault" in the Bestiary tab after setting the path</li>
+                <li>Verify JSON files are properly formatted</li>
+            </ul>
+        </div>
+
+        <div class="feature">
+            <span class="feature-title">Conditions Not Appearing:</span>
+            <ul>
+                <li>Make sure "Log Conditions" is enabled in Config if you want them logged</li>
+                <li>Conditions appear as colored tags in the "Conds" column</li>
+                <li>Click the "Con" checkbox to open the conditions dialog</li>
+            </ul>
+        </div>
+
+        <div class="feature">
+            <span class="feature-title">Config Not Saving:</span>
+            <ul>
+                <li>Use "Save Config" button (not just checking boxes)</li>
+                <li>Look for the green "Saved successfully" message with timestamp</li>
+                <li>Some settings (like auto-refresh checkbox) auto-save immediately</li>
+            </ul>
+        </div>
+
+        <div class="feature">
+            <span class="feature-title">Table Columns Too Small:</span>
+            <ul>
+                <li>Go to Config tab and adjust column widths under "Table Appearance"</li>
+                <li>Click "Save Config" then "Refresh UI" to apply changes</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="tab-section">
+        <h2>Version & Support</h2>
+        <p>Nimble Encounter Builder is designed for TTRPG sessions with a focus on speed and usability during live gameplay.</p>
+
+        <p><strong>Features:</strong></p>
+        <ul>
+            <li>Multi-combatant tracking with HP, conditions, and markers</li>
+            <li>Monster library and encounter builder</li>
+            <li>Party management with persistent saves</li>
+            <li>Customizable HP thresholds and visual indicators</li>
+            <li>Battle map marker system with color coding</li>
+            <li>Comprehensive condition tracking</li>
+            <li>Combat logging with configurable events</li>
+            <li>Stat block preview and loot display</li>
+        </ul>
+    </div>
+</body>
+</html>

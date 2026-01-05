@@ -1,0 +1,2949 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>NimbleHPMainWindow</class>
+ <widget class="QMainWindow" name="NimbleHPMainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>618</width>
+    <height>767</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Nimble Encounter Builder</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QLabel {
+    padding: 4px;
+}
+</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="verticalLayout_central">
+    <item>
+     <widget class="QTabWidget" name="mainTabs">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>600</width>
+        <height>700</height>
+       </size>
+      </property>
+      <property name="baseSize">
+       <size>
+        <width>600</width>
+        <height>700</height>
+       </size>
+      </property>
+      <property name="tabPosition">
+       <enum>QTabWidget::TabPosition::North</enum>
+      </property>
+      <property name="tabShape">
+       <enum>QTabWidget::TabShape::Rounded</enum>
+      </property>
+      <property name="currentIndex">
+       <number>4</number>
+      </property>
+      <widget class="QWidget" name="tab_combat">
+       <attribute name="title">
+        <string>Combat</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout_combat">
+        <item>
+         <layout class="QVBoxLayout" name="verticalLayout_heroesSection">
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_heroesRow">
+            <item>
+             <layout class="QVBoxLayout" name="verticalLayout">
+              <property name="spacing">
+               <number>0</number>
+              </property>
+              <item alignment="Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignTop">
+               <widget class="QLabel" name="label_heroesTitle">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="minimumSize">
+                 <size>
+                  <width>100</width>
+                  <height>20</height>
+                 </size>
+                </property>
+                <property name="baseSize">
+                 <size>
+                  <width>120</width>
+                  <height>12</height>
+                 </size>
+                </property>
+                <property name="font">
+                 <font>
+                  <bold>true</bold>
+                 </font>
+                </property>
+                <property name="text">
+                 <string>Heroes</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <spacer name="combatHereosVertSpc2">
+                <property name="orientation">
+                 <enum>Qt::Orientation::Vertical</enum>
+                </property>
+                <property name="sizeType">
+                 <enum>QSizePolicy::Policy::Fixed</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>100</width>
+                  <height>10</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+              <item>
+               <widget class="QLabel" name="label_legendHealthy">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="minimumSize">
+                 <size>
+                  <width>100</width>
+                  <height>20</height>
+                 </size>
+                </property>
+                <property name="autoFillBackground">
+                 <bool>false</bool>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">QLabel {
+    background-color: rgb(0, 85, 0);
+	color: white;
+	font-weight: bold;
+	
+}
+</string>
+                </property>
+                <property name="text">
+                 <string>Healthy</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLabel" name="label_legendBloodied">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="minimumSize">
+                 <size>
+                  <width>100</width>
+                  <height>20</height>
+                 </size>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">QLabel {
+    background-color: rgb(167, 111, 0);
+	color: white;
+	font-weight: bold;
+	
+}
+</string>
+                </property>
+                <property name="text">
+                 <string>Bloodied</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLabel" name="label_legendCritical">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="minimumSize">
+                 <size>
+                  <width>100</width>
+                  <height>20</height>
+                 </size>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">QLabel {
+    background-color: rgb(170, 0, 0);
+	color: white;
+	font-weight: bold;
+	
+}
+</string>
+                </property>
+                <property name="text">
+                 <string>Critical</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <spacer name="combatHereosVertSpc1">
+                <property name="orientation">
+                 <enum>Qt::Orientation::Vertical</enum>
+                </property>
+                <property name="sizeType">
+                 <enum>QSizePolicy::Policy::Fixed</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>100</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+              <item>
+               <widget class="QLabel" name="label_legendConditions">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="minimumSize">
+                 <size>
+                  <width>100</width>
+                  <height>20</height>
+                 </size>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">QLabel {
+    background-color: rgb(61, 0, 182);
+	color: white;
+	font-weight: bold;
+	
+}
+</string>
+                </property>
+                <property name="text">
+                 <string>Conditions</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLabel" name="label_legendDown">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="minimumSize">
+                 <size>
+                  <width>100</width>
+                  <height>20</height>
+                 </size>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">QLabel {
+    background-color: rgb(48, 48, 48);
+	color: white;
+	font-weight: bold;
+	
+}
+</string>
+                </property>
+                <property name="text">
+                 <string>Down</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <spacer name="verticalSpacer">
+                <property name="orientation">
+                 <enum>Qt::Orientation::Vertical</enum>
+                </property>
+                <property name="sizeType">
+                 <enum>QSizePolicy::Policy::Preferred</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>20</width>
+                  <height>40</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <widget class="QTableWidget" name="heroes_table_combat">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="minimumSize">
+               <size>
+                <width>0</width>
+                <height>170</height>
+               </size>
+              </property>
+              <property name="rowCount">
+               <number>0</number>
+              </property>
+              <property name="columnCount">
+               <number>8</number>
+              </property>
+              <attribute name="horizontalHeaderVisible">
+               <bool>true</bool>
+              </attribute>
+              <attribute name="verticalHeaderVisible">
+               <bool>false</bool>
+              </attribute>
+              <column>
+               <property name="text">
+                <string>💚</string>
+               </property>
+              </column>
+              <column>
+               <property name="text">
+                <string>Name</string>
+               </property>
+              </column>
+              <column>
+               <property name="text">
+                <string>⚔</string>
+               </property>
+              </column>
+              <column>
+               <property name="text">
+                <string>Con</string>
+               </property>
+              </column>
+              <column>
+               <property name="text">
+                <string>Conds</string>
+               </property>
+              </column>
+              <column>
+               <property name="text">
+                <string>HP</string>
+               </property>
+              </column>
+              <column>
+               <property name="text">
+                <string>Tmp</string>
+               </property>
+              </column>
+              <column>
+               <property name="text">
+                <string>Max</string>
+               </property>
+              </column>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout">
+          <item>
+           <widget class="QTextEdit" name="combatStatBlockPreview">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>200</height>
+             </size>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_monstersRow">
+          <item>
+           <layout class="QVBoxLayout" name="verticalLayout_monstersControls">
+            <item>
+             <widget class="QLabel" name="label_monstersTitle">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="minimumSize">
+               <size>
+                <width>100</width>
+                <height>20</height>
+               </size>
+              </property>
+              <property name="font">
+               <font>
+                <bold>true</bold>
+               </font>
+              </property>
+              <property name="text">
+               <string>Monsters</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <spacer name="combatMonsterVertSpc1">
+              <property name="orientation">
+               <enum>Qt::Orientation::Vertical</enum>
+              </property>
+              <property name="sizeType">
+               <enum>QSizePolicy::Policy::Fixed</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>100</width>
+                <height>5</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
+             <widget class="QLabel" name="label_encounter_diff">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="minimumSize">
+               <size>
+                <width>100</width>
+                <height>25</height>
+               </size>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">QLabel {
+	
+	background-color: rgb(170, 0, 0);
+	color: white;
+	font-weight: bold;
+	border: 2px solid white;
+    border-radius: 6px;
+
+}
+</string>
+              </property>
+              <property name="text">
+               <string>Hard (100%)</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <spacer name="combatMonsterVertSpc4">
+              <property name="orientation">
+               <enum>Qt::Orientation::Vertical</enum>
+              </property>
+              <property name="sizeType">
+               <enum>QSizePolicy::Policy::Fixed</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>100</width>
+                <height>10</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
+             <widget class="QLabel" name="label_legendary">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="minimumSize">
+               <size>
+                <width>100</width>
+                <height>20</height>
+               </size>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">QLabel {
+    background-color: rgb(0, 0, 127);
+	color: white;
+	font-weight: bold;
+}
+</string>
+              </property>
+              <property name="text">
+               <string>Legendary</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="label_inactive">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="minimumSize">
+               <size>
+                <width>100</width>
+                <height>20</height>
+               </size>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">QLabel {
+    background-color: rgb(113, 113, 113);
+	color: blue;
+	font-weight: bold;
+}
+</string>
+              </property>
+              <property name="text">
+               <string>Inactive</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <spacer name="combatMonsterVertSpc2">
+              <property name="orientation">
+               <enum>Qt::Orientation::Vertical</enum>
+              </property>
+              <property name="sizeType">
+               <enum>QSizePolicy::Policy::Fixed</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>100</width>
+                <height>10</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
+             <widget class="QPushButton" name="btn_add_monster">
+              <property name="text">
+               <string>Add Monster</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="btn_del_monster">
+              <property name="text">
+               <string>Delete Selected</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="btn_set_color">
+              <property name="text">
+               <string>Set Color</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <spacer name="combatMonsterVertSpc3">
+              <property name="orientation">
+               <enum>Qt::Orientation::Vertical</enum>
+              </property>
+              <property name="sizeType">
+               <enum>QSizePolicy::Policy::Expanding</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>20</width>
+                <height>10</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
+             <widget class="QPushButton" name="btn_reset_combat">
+              <property name="text">
+               <string>Reset Combat</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="btn_clear_encounter">
+              <property name="text">
+               <string>Clear Encounter</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <widget class="QTableWidget" name="monsters_table_combat">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>275</height>
+             </size>
+            </property>
+            <property name="rowCount">
+             <number>0</number>
+            </property>
+            <property name="columnCount">
+             <number>10</number>
+            </property>
+            <attribute name="horizontalHeaderVisible">
+             <bool>true</bool>
+            </attribute>
+            <attribute name="horizontalHeaderMinimumSectionSize">
+             <number>1</number>
+            </attribute>
+            <attribute name="horizontalHeaderDefaultSectionSize">
+             <number>5</number>
+            </attribute>
+            <attribute name="horizontalHeaderStretchLastSection">
+             <bool>false</bool>
+            </attribute>
+            <attribute name="verticalHeaderVisible">
+             <bool>false</bool>
+            </attribute>
+            <column>
+             <property name="text">
+              <string>Act</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>💚</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>Name</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>⚔</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>Mk</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>Con</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>Conds</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>HP</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>Tmp</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>Max</string>
+             </property>
+            </column>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="tab_combat_extras">
+       <attribute name="title">
+        <string>Combat Extras</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout_combat_extras">
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_logHeader">
+          <item>
+           <widget class="QLabel" name="label_log_title">
+            <property name="font">
+             <font>
+              <bold>true</bold>
+             </font>
+            </property>
+            <property name="text">
+             <string>Combat Log</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer_log">
+            <property name="orientation">
+             <enum>Qt::Orientation::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QPushButton" name="btn_save_log">
+            <property name="text">
+             <string>Save Log</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="btn_load_log">
+            <property name="text">
+             <string>Load Log</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="btn_clear_log">
+            <property name="text">
+             <string>Clear Log</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <widget class="QTextEdit" name="combat_log_text">
+          <property name="placeholderText">
+           <string>Combat log...</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="label_loot_title">
+          <property name="font">
+           <font>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="text">
+           <string>Loot Notes</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QTextEdit" name="loot_text">
+          <property name="placeholderText">
+           <string>Loot notes...</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="tab_bestiary">
+       <attribute name="title">
+        <string>Bestiary</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout_bestiary">
+        <item>
+         <layout class="QVBoxLayout" name="verticalLayout_heroesSection_bestiary"/>
+        </item>
+        <item>
+         <layout class="QVBoxLayout" name="verticalLayout_preview_bestiary">
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_search_bestiary">
+            <item>
+             <layout class="QVBoxLayout" name="verticalLayout_searchFields_bestiary">
+              <item>
+               <layout class="QHBoxLayout" name="horizontalLayout_monsterSearchHeader_bestiary">
+                <item>
+                 <widget class="QLabel" name="label_monsterSearch_bestiary">
+                  <property name="text">
+                   <string>Monster Search</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <spacer name="horizontalSpacer_monsterSearchHeader_bestiary">
+                  <property name="orientation">
+                   <enum>Qt::Orientation::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>20</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+                <item>
+                 <widget class="QCheckBox" name="checkbox_show_legendary_bestiary">
+                  <property name="text">
+                   <string>Legendary</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <widget class="QLineEdit" name="lineEdit_monsterSearch_bestiary">
+                <property name="placeholderText">
+                 <string>Search monsters...</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLabel" name="label_biomeSearch_bestiary">
+                <property name="text">
+                 <string>Biome</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QComboBox" name="combo_biomeSearch_bestiary">
+                <property name="editable">
+                 <bool>true</bool>
+                </property>
+                <property name="placeholderText">
+                 <string>Filter by biome...</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLabel" name="label_levelSearch_bestiary">
+                <property name="text">
+                 <string>Level</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLineEdit" name="lineEdit_levelSearch_bestiary">
+                <property name="placeholderText">
+                 <string>Filter by level...</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <layout class="QGridLayout" name="gridLayout">
+                <item row="1" column="0">
+                 <widget class="QPushButton" name="btn_add_monster_bestiary">
+                  <property name="text">
+                   <string>Add Selected Monster</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="0">
+                 <spacer name="verticalSpacer_2">
+                  <property name="orientation">
+                   <enum>Qt::Orientation::Vertical</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>20</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+               </layout>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <widget class="QListWidget" name="list_monsters_bestiary"/>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <widget class="QTextEdit" name="stat_block_preview_bestiary">
+            <property name="readOnly">
+             <bool>true</bool>
+            </property>
+            <property name="placeholderText">
+             <string>Stat block preview...</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_monstersRow_bestiary">
+          <item>
+           <layout class="QVBoxLayout" name="verticalLayout_monstersControls_bestiary">
+            <item>
+             <widget class="QLabel" name="label_monstersTitle_bestiary">
+              <property name="font">
+               <font>
+                <bold>true</bold>
+               </font>
+              </property>
+              <property name="text">
+               <string>Monsters</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <spacer name="verticalSpacer_4">
+              <property name="orientation">
+               <enum>Qt::Orientation::Vertical</enum>
+              </property>
+              <property name="sizeType">
+               <enum>QSizePolicy::Policy::Fixed</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>100</width>
+                <height>15</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
+             <widget class="QLabel" name="label_encounter_diff_bestiary">
+              <property name="styleSheet">
+               <string notr="true">QLabel {
+	
+	background-color: rgb(170, 0, 0);
+	color: white;
+	font-weight: bold;
+	border: 2px solid white;
+    border-radius: 6px;
+
+}
+</string>
+              </property>
+              <property name="text">
+               <string>Hard (100%)</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <spacer name="verticalSpacer_3">
+              <property name="orientation">
+               <enum>Qt::Orientation::Vertical</enum>
+              </property>
+              <property name="sizeType">
+               <enum>QSizePolicy::Policy::Fixed</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>100</width>
+                <height>15</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
+             <widget class="QPushButton" name="btn_del_monster_bestiary">
+              <property name="text">
+               <string>Delete Selected</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="btn_load_encounter_bestiary">
+              <property name="text">
+               <string>Load Encounter</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="btn_save_encounter_bestiary">
+              <property name="text">
+               <string>Save Encounter</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="btn_clear_encounter_bestiary">
+              <property name="text">
+               <string>Clear Encounter</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="btn_random_encounter_bestiary">
+              <property name="text">
+               <string>Random Encounter</string>
+              </property>
+              <property name="toolTip">
+               <string>Generate a random encounter based on difficulty and biome</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="btn_set_color_bestiary">
+              <property name="text">
+               <string>Set Color</string>
+              </property>
+              <property name="toolTip">
+               <string>Set marker color for selected monsters</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <spacer name="verticalSpacer_monstersControls_bestiary">
+              <property name="orientation">
+               <enum>Qt::Orientation::Vertical</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>20</width>
+                <height>40</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <widget class="QTableWidget" name="monsters_table_bestiary">
+            <property name="rowCount">
+             <number>0</number>
+            </property>
+            <property name="columnCount">
+             <number>6</number>
+            </property>
+            <attribute name="horizontalHeaderVisible">
+             <bool>true</bool>
+            </attribute>
+            <attribute name="verticalHeaderVisible">
+             <bool>false</bool>
+            </attribute>
+            <column>
+             <property name="text">
+              <string>Active</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>Name</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>Wave</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>Mk</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>Lvl</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>Max</string>
+             </property>
+            </column>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="tab_heroes">
+       <attribute name="title">
+        <string>Heroes</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout_heroesTab">
+        <item>
+         <layout class="QVBoxLayout" name="verticalLayout_heroesSection_heroesTab">
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_heroesRow_heroesTab">
+            <item>
+             <layout class="QVBoxLayout" name="verticalLayout_heroesControls_heroesTab">
+              <item>
+               <widget class="QLabel" name="label_heroesTitle_heroesTab">
+                <property name="font">
+                 <font>
+                  <bold>true</bold>
+                 </font>
+                </property>
+                <property name="text">
+                 <string>Heroes</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="btn_add_hero_heroesTab">
+                <property name="text">
+                 <string>Add Hero</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="btn_del_hero_heroesTab">
+                <property name="text">
+                 <string>Delete Selected</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="btn_import_party_heroesTab">
+                <property name="text">
+                 <string>Import Party</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="btn_export_party_heroesTab">
+                <property name="text">
+                 <string>Export Party</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <spacer name="verticalSpacer_heroesControls_heroesTab">
+                <property name="orientation">
+                 <enum>Qt::Orientation::Vertical</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>20</width>
+                  <height>40</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <widget class="QTableWidget" name="heroes_table_heroesTab">
+              <property name="rowCount">
+               <number>0</number>
+              </property>
+              <property name="columnCount">
+               <number>7</number>
+              </property>
+              <attribute name="horizontalHeaderVisible">
+               <bool>true</bool>
+              </attribute>
+              <attribute name="verticalHeaderVisible">
+               <bool>false</bool>
+              </attribute>
+              <column>
+               <property name="text">
+                <string>Name</string>
+               </property>
+              </column>
+              <column>
+               <property name="text">
+                <string>Player</string>
+               </property>
+              </column>
+              <column>
+               <property name="text">
+                <string>Lvl</string>
+               </property>
+              </column>
+              <column>
+               <property name="text">
+                <string>Max</string>
+               </property>
+              </column>
+              <column>
+               <property name="text">
+                <string>Class</string>
+               </property>
+              </column>
+              <column>
+               <property name="text">
+                <string>GM Notes</string>
+               </property>
+              </column>
+              <column>
+               <property name="text">
+                <string>Player Notes</string>
+               </property>
+              </column>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_legendRow_heroesTab">
+            <item>
+             <spacer name="horizontalSpacer_legendLeft_heroesTab">
+              <property name="orientation">
+               <enum>Qt::Orientation::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
+             <spacer name="horizontalSpacer_legendRight_heroesTab">
+              <property name="orientation">
+               <enum>Qt::Orientation::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QVBoxLayout" name="verticalLayout_preview_heroesTab"/>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_monstersRow_heroesTab"/>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="tab_config">
+       <attribute name="title">
+        <string>Config</string>
+       </attribute>
+       <widget class="QTabWidget" name="tabWidget">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>582</width>
+          <height>650</height>
+         </rect>
+        </property>
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="tabPosition">
+         <enum>QTabWidget::TabPosition::North</enum>
+        </property>
+        <property name="tabShape">
+         <enum>QTabWidget::TabShape::Rounded</enum>
+        </property>
+        <property name="currentIndex">
+         <number>2</number>
+        </property>
+        <widget class="QWidget" name="tab_combat_2">
+         <attribute name="title">
+          <string>Combat &amp; HP</string>
+         </attribute>
+         <layout class="QVBoxLayout" name="verticalLayout_tab_combat">
+          <property name="spacing">
+           <number>8</number>
+          </property>
+          <item>
+           <widget class="QGroupBox" name="group_hp">
+            <property name="title">
+             <string>HP Thresholds</string>
+            </property>
+            <layout class="QGridLayout" name="gridLayout_hp">
+             <property name="horizontalSpacing">
+              <number>8</number>
+             </property>
+             <property name="verticalSpacing">
+              <number>4</number>
+             </property>
+             <item row="0" column="0">
+              <widget class="QWidget" name="widget_monster_bloodied" native="true">
+               <layout class="QVBoxLayout" name="vl_monster_bloodied">
+                <property name="spacing">
+                 <number>2</number>
+                </property>
+                <item>
+                 <widget class="QLabel" name="label_monster_bloodied">
+                  <property name="text">
+                   <string>Monster Bloodied</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QDoubleSpinBox" name="spin_monster_bloodied">
+                  <property name="decimals">
+                   <number>2</number>
+                  </property>
+                  <property name="minimum">
+                   <double>0.000000000000000</double>
+                  </property>
+                  <property name="maximum">
+                   <double>1.000000000000000</double>
+                  </property>
+                  <property name="singleStep">
+                   <double>0.050000000000000</double>
+                  </property>
+                  <property name="value">
+                   <double>0.500000000000000</double>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+             <item row="0" column="1">
+              <widget class="QWidget" name="widget_hero_bloodied" native="true">
+               <layout class="QVBoxLayout" name="vl_hero_bloodied">
+                <property name="spacing">
+                 <number>2</number>
+                </property>
+                <item>
+                 <widget class="QLabel" name="label_hero_bloodied">
+                  <property name="text">
+                   <string>Hero Bloodied</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QDoubleSpinBox" name="spin_hero_bloodied">
+                  <property name="decimals">
+                   <number>2</number>
+                  </property>
+                  <property name="minimum">
+                   <double>0.000000000000000</double>
+                  </property>
+                  <property name="maximum">
+                   <double>1.000000000000000</double>
+                  </property>
+                  <property name="singleStep">
+                   <double>0.050000000000000</double>
+                  </property>
+                  <property name="value">
+                   <double>0.500000000000000</double>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+             <item row="1" column="0">
+              <widget class="QWidget" name="widget_monster_critical" native="true">
+               <layout class="QVBoxLayout" name="vl_monster_critical">
+                <property name="spacing">
+                 <number>2</number>
+                </property>
+                <item>
+                 <widget class="QLabel" name="label_monster_critical">
+                  <property name="text">
+                   <string>Monster Critical</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QDoubleSpinBox" name="spin_monster_critical">
+                  <property name="decimals">
+                   <number>2</number>
+                  </property>
+                  <property name="minimum">
+                   <double>0.000000000000000</double>
+                  </property>
+                  <property name="maximum">
+                   <double>1.000000000000000</double>
+                  </property>
+                  <property name="singleStep">
+                   <double>0.050000000000000</double>
+                  </property>
+                  <property name="value">
+                   <double>0.250000000000000</double>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+             <item row="1" column="1">
+              <widget class="QWidget" name="widget_hero_critical" native="true">
+               <layout class="QVBoxLayout" name="vl_hero_critical">
+                <property name="spacing">
+                 <number>2</number>
+                </property>
+                <item>
+                 <widget class="QLabel" name="label_hero_critical">
+                  <property name="text">
+                   <string>Hero Critical</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QDoubleSpinBox" name="spin_hero_critical">
+                  <property name="decimals">
+                   <number>2</number>
+                  </property>
+                  <property name="minimum">
+                   <double>0.000000000000000</double>
+                  </property>
+                  <property name="maximum">
+                   <double>1.000000000000000</double>
+                  </property>
+                  <property name="singleStep">
+                   <double>0.050000000000000</double>
+                  </property>
+                  <property name="value">
+                   <double>0.250000000000000</double>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item>
+           <widget class="QGroupBox" name="group_encounter_difficulty">
+            <property name="title">
+             <string>Encounter Difficulty Thresholds</string>
+            </property>
+            <layout class="QGridLayout" name="gridLayout_encounter_difficulty">
+             <property name="horizontalSpacing">
+              <number>8</number>
+             </property>
+             <property name="verticalSpacing">
+              <number>4</number>
+             </property>
+             <item row="0" column="0">
+              <widget class="QWidget" name="widget_difficulty_easy" native="true">
+               <layout class="QVBoxLayout" name="vl_difficulty_easy">
+                <property name="spacing">
+                 <number>2</number>
+                </property>
+                <item>
+                 <widget class="QLabel" name="label_difficulty_easy">
+                  <property name="text">
+                   <string>Easy (Monsters &lt; X%)</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QDoubleSpinBox" name="spin_difficulty_easy">
+                  <property name="decimals">
+                   <number>2</number>
+                  </property>
+                  <property name="minimum">
+                   <double>0.000000000000000</double>
+                  </property>
+                  <property name="maximum">
+                   <double>5.000000000000000</double>
+                  </property>
+                  <property name="singleStep">
+                   <double>0.050000000000000</double>
+                  </property>
+                  <property name="value">
+                   <double>0.500000000000000</double>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+             <item row="0" column="1">
+              <widget class="QWidget" name="widget_difficulty_medium" native="true">
+               <layout class="QVBoxLayout" name="vl_difficulty_medium">
+                <property name="spacing">
+                 <number>2</number>
+                </property>
+                <item>
+                 <widget class="QLabel" name="label_difficulty_medium">
+                  <property name="text">
+                   <string>Medium (Monsters &lt; X%)</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QDoubleSpinBox" name="spin_difficulty_medium">
+                  <property name="decimals">
+                   <number>2</number>
+                  </property>
+                  <property name="minimum">
+                   <double>0.000000000000000</double>
+                  </property>
+                  <property name="maximum">
+                   <double>5.000000000000000</double>
+                  </property>
+                  <property name="singleStep">
+                   <double>0.050000000000000</double>
+                  </property>
+                  <property name="value">
+                   <double>0.750000000000000</double>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+             <item row="1" column="0">
+              <widget class="QWidget" name="widget_difficulty_hard" native="true">
+               <layout class="QVBoxLayout" name="vl_difficulty_hard">
+                <property name="spacing">
+                 <number>2</number>
+                </property>
+                <item>
+                 <widget class="QLabel" name="label_difficulty_hard">
+                  <property name="text">
+                   <string>Hard (Monsters &lt; X%)</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QDoubleSpinBox" name="spin_difficulty_hard">
+                  <property name="decimals">
+                   <number>2</number>
+                  </property>
+                  <property name="minimum">
+                   <double>0.000000000000000</double>
+                  </property>
+                  <property name="maximum">
+                   <double>5.000000000000000</double>
+                  </property>
+                  <property name="singleStep">
+                   <double>0.050000000000000</double>
+                  </property>
+                  <property name="value">
+                   <double>1.000000000000000</double>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+             <item row="1" column="1">
+              <widget class="QWidget" name="widget_difficulty_deadly_max" native="true">
+               <layout class="QVBoxLayout" name="vl_difficulty_deadly_max">
+                <property name="spacing">
+                 <number>2</number>
+                </property>
+                <item>
+                 <widget class="QLabel" name="label_difficulty_deadly_max">
+                  <property name="text">
+                   <string>Deadly Max (Monsters &lt;= X%)</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QDoubleSpinBox" name="spin_difficulty_deadly_max">
+                  <property name="decimals">
+                   <number>2</number>
+                  </property>
+                  <property name="minimum">
+                   <double>0.000000000000000</double>
+                  </property>
+                  <property name="maximum">
+                   <double>5.000000000000000</double>
+                  </property>
+                  <property name="singleStep">
+                   <double>0.050000000000000</double>
+                  </property>
+                  <property name="value">
+                   <double>1.250000000000000</double>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item>
+           <widget class="QGroupBox" name="group_markers">
+            <property name="title">
+             <string>Map Markers</string>
+            </property>
+            <layout class="QGridLayout" name="gridLayout_markers">
+             <property name="horizontalSpacing">
+              <number>8</number>
+             </property>
+             <property name="verticalSpacing">
+              <number>4</number>
+             </property>
+             <item row="0" column="0">
+              <widget class="QLabel" name="label_marker_start">
+               <property name="text">
+                <string>Start Number</string>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="1">
+              <widget class="QSpinBox" name="spin_marker_start">
+               <property name="minimum">
+                <number>0</number>
+               </property>
+               <property name="maximum">
+                <number>999</number>
+               </property>
+               <property name="value">
+                <number>1</number>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="0">
+              <widget class="QLabel" name="label_marker_palette">
+               <property name="text">
+                <string>Palette</string>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="1">
+              <widget class="QListWidget" name="list_marker_palette">
+               <item>
+                <property name="text">
+                 <string>#FFFFFF</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>#FF0000</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>#0000FF</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>#00AA00</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>#FFFF00</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>#800080</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>#000000</string>
+                </property>
+               </item>
+              </widget>
+             </item>
+             <item row="2" column="0">
+              <widget class="QLabel" name="label_marker_new_color">
+               <property name="text">
+                <string>New Color</string>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="1">
+              <layout class="QHBoxLayout" name="hl_marker_new_color">
+               <item>
+                <widget class="QPushButton" name="btn_marker_color_preview">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="minimumSize">
+                  <size>
+                   <width>200</width>
+                   <height>0</height>
+                  </size>
+                 </property>
+                 <property name="toolTip">
+                  <string>Pick marker color</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QPushButton" name="btn_add_marker_color">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="minimumSize">
+                  <size>
+                   <width>120</width>
+                   <height>0</height>
+                  </size>
+                 </property>
+                 <property name="text">
+                  <string>Add to Palette</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item>
+           <widget class="QGroupBox" name="group_logging">
+            <property name="title">
+             <string>Logging Verbosity</string>
+            </property>
+            <layout class="QGridLayout" name="grid_logging">
+             <property name="horizontalSpacing">
+              <number>8</number>
+             </property>
+             <property name="verticalSpacing">
+              <number>4</number>
+             </property>
+             <item row="0" column="0">
+              <widget class="QCheckBox" name="check_log_damage">
+               <property name="text">
+                <string>Damage events</string>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="0">
+              <widget class="QCheckBox" name="check_log_heal">
+               <property name="text">
+                <string>Healing events</string>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="0">
+              <widget class="QCheckBox" name="check_log_deaths">
+               <property name="text">
+                <string>Deaths</string>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="1">
+              <widget class="QCheckBox" name="check_log_conditions">
+               <property name="text">
+                <string>Condition changes</string>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="1">
+              <widget class="QCheckBox" name="check_log_laststand">
+               <property name="text">
+                <string>Last Stand triggers</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+        <widget class="QWidget" name="tab_conditions">
+         <attribute name="title">
+          <string>Conditions</string>
+         </attribute>
+         <layout class="QVBoxLayout" name="verticalLayout_tab_conditions">
+          <property name="spacing">
+           <number>8</number>
+          </property>
+          <item>
+           <widget class="QGroupBox" name="group_conditions">
+            <property name="title">
+             <string>Conditions</string>
+            </property>
+            <layout class="QVBoxLayout" name="vl_conditions">
+             <property name="spacing">
+              <number>4</number>
+             </property>
+             <item>
+              <widget class="QTableWidget" name="table_conditions">
+               <property name="rowCount">
+                <number>0</number>
+               </property>
+               <property name="columnCount">
+                <number>2</number>
+               </property>
+               <column>
+                <property name="text">
+                 <string>Condition</string>
+                </property>
+               </column>
+               <column>
+                <property name="text">
+                 <string>Description</string>
+                </property>
+               </column>
+              </widget>
+             </item>
+             <item>
+              <layout class="QHBoxLayout" name="hl_condition_buttons">
+               <property name="spacing">
+                <number>6</number>
+               </property>
+               <item>
+                <widget class="QPushButton" name="btn_add_condition">
+                 <property name="text">
+                  <string>Add Condition</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QPushButton" name="btn_remove_condition">
+                 <property name="text">
+                  <string>Remove Selected</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <spacer name="spacer_conditions">
+                 <property name="orientation">
+                  <enum>Qt::Orientation::Horizontal</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>20</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+              </layout>
+             </item>
+            </layout>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+        <widget class="QWidget" name="tab_paths">
+         <attribute name="title">
+          <string>Paths &amp; Files</string>
+         </attribute>
+         <layout class="QVBoxLayout" name="verticalLayout_tab_paths">
+          <property name="spacing">
+           <number>8</number>
+          </property>
+          <item>
+           <widget class="QGroupBox" name="group_autosave">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="title">
+             <string>Autosave / Config File</string>
+            </property>
+            <layout class="QGridLayout" name="grid_autosave">
+             <item row="0" column="0">
+              <widget class="QCheckBox" name="check_autosave_enabled">
+               <property name="text">
+                <string>Enable autosave</string>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="2">
+              <widget class="QPushButton" name="btn_browse_autosave">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="text">
+                <string>Browse...</string>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="1">
+              <widget class="QWidget" name="widget_autosave_path" native="true">
+               <layout class="QHBoxLayout" name="hl_autosave">
+                <item>
+                 <widget class="QLineEdit" name="edit_autosave_path">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="frame">
+                   <bool>true</bool>
+                  </property>
+                  <property name="placeholderText">
+                   <string>autosave_session.json</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+             <item row="1" column="2">
+              <widget class="QPushButton" name="btn_browse_config">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="text">
+                <string>Browse...</string>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="0">
+              <widget class="QLabel" name="label">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="text">
+                <string>Config File</string>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="1">
+              <widget class="QLineEdit" name="edit_config_path">
+               <property name="enabled">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item>
+           <widget class="QGroupBox" name="group_vault">
+            <property name="title">
+             <string>Monster Vault</string>
+            </property>
+            <layout class="QGridLayout" name="grid_vault">
+             <item row="0" column="0">
+              <widget class="QLabel" name="label_vault_path">
+               <property name="text">
+                <string>Vault Path</string>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="1">
+              <widget class="QLineEdit" name="edit_vault_path">
+               <property name="placeholderText">
+                <string>Path to bestiary JSON file...</string>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="2">
+              <widget class="QPushButton" name="btn_browse_vault_path">
+               <property name="text">
+                <string>Browse...</string>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="0" colspan="3">
+              <widget class="QCheckBox" name="check_auto_refresh_encounter">
+               <property name="text">
+                <string>Auto-refresh monster data from vault when loading encounters</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item>
+           <widget class="QGroupBox" name="group_obsidian">
+            <property name="title">
+             <string>Obsidian Vault</string>
+            </property>
+            <layout class="QGridLayout" name="grid_obsidian">
+             <item row="0" column="0">
+              <widget class="QLabel" name="label_obsidian_path">
+               <property name="text">
+                <string>Vault Location</string>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="1">
+              <widget class="QLineEdit" name="edit_obsidian_path">
+               <property name="placeholderText">
+                <string>C:\TTRPG_Vault\...</string>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="2">
+              <widget class="QPushButton" name="btn_browse_obsidian">
+               <property name="text">
+                <string>Browse...</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item>
+           <widget class="QGroupBox" name="group_storage">
+            <property name="title">
+             <string>Encounter &amp; Party Storage</string>
+            </property>
+            <layout class="QGridLayout" name="grid_storage">
+             <item row="0" column="0">
+              <widget class="QLabel" name="label_encounter_path">
+               <property name="text">
+                <string>Encounter Folder</string>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="1">
+              <widget class="QLineEdit" name="edit_encounter_path">
+               <property name="placeholderText">
+                <string>Folder for encounter files...</string>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="2">
+              <widget class="QPushButton" name="btn_browse_encounter">
+               <property name="text">
+                <string>Browse...</string>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="0">
+              <widget class="QLabel" name="label_party_path">
+               <property name="text">
+                <string>Party Folder</string>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="1">
+              <widget class="QLineEdit" name="edit_party_path">
+               <property name="placeholderText">
+                <string>Folder for party files...</string>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="2">
+              <widget class="QPushButton" name="btn_browse_party">
+               <property name="text">
+                <string>Browse...</string>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="0">
+              <widget class="QLabel" name="label_combat_log_path">
+               <property name="text">
+                <string>Combat Log Folder</string>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="1">
+              <widget class="QLineEdit" name="edit_combat_log_path">
+               <property name="placeholderText">
+                <string>Folder for combat log files...</string>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="2">
+              <widget class="QPushButton" name="btn_browse_combat_log">
+               <property name="text">
+                <string>Browse...</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+        <widget class="QWidget" name="tab_layout_colors">
+         <attribute name="title">
+          <string>Columns &amp; Colors</string>
+         </attribute>
+         <layout class="QVBoxLayout" name="verticalLayout_tab_layout_colors">
+          <property name="spacing">
+           <number>8</number>
+          </property>
+          <item>
+           <layout class="QHBoxLayout" name="hl_columns_row">
+            <property name="spacing">
+             <number>8</number>
+            </property>
+            <item>
+             <widget class="QGroupBox" name="group_columns_heroes">
+              <property name="title">
+               <string>Heroes Table Column Widths (px)</string>
+              </property>
+              <layout class="QGridLayout" name="grid_columns_heroes">
+               <property name="horizontalSpacing">
+                <number>6</number>
+               </property>
+               <property name="verticalSpacing">
+                <number>4</number>
+               </property>
+               <item row="0" column="0">
+                <widget class="QLabel" name="label_col_heroes_name">
+                 <property name="text">
+                  <string>Name</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="1">
+                <widget class="QSpinBox" name="spin_heroes_col_name">
+                 <property name="maximum">
+                  <number>400</number>
+                 </property>
+                 <property name="value">
+                  <number>120</number>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="0">
+                <widget class="QLabel" name="label_col_heroes_player">
+                 <property name="text">
+                  <string>Player</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="1">
+                <widget class="QSpinBox" name="spin_heroes_col_player">
+                 <property name="maximum">
+                  <number>400</number>
+                 </property>
+                 <property name="value">
+                  <number>100</number>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="0">
+                <widget class="QLabel" name="label_col_heroes_lvl">
+                 <property name="text">
+                  <string>Lvl</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="1">
+                <widget class="QSpinBox" name="spin_heroes_col_lvl">
+                 <property name="maximum">
+                  <number>200</number>
+                 </property>
+                 <property name="value">
+                  <number>60</number>
+                 </property>
+                </widget>
+               </item>
+               <item row="3" column="0">
+                <widget class="QLabel" name="label_col_heroes_max">
+                 <property name="text">
+                  <string>Max HP</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="3" column="1">
+                <widget class="QSpinBox" name="spin_heroes_col_max">
+                 <property name="maximum">
+                  <number>200</number>
+                 </property>
+                 <property name="value">
+                  <number>70</number>
+                 </property>
+                </widget>
+               </item>
+               <item row="4" column="0">
+                <widget class="QLabel" name="label_col_heroes_class">
+                 <property name="text">
+                  <string>Class</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="4" column="1">
+                <widget class="QSpinBox" name="spin_heroes_col_class">
+                 <property name="maximum">
+                  <number>300</number>
+                 </property>
+                 <property name="value">
+                  <number>120</number>
+                 </property>
+                </widget>
+               </item>
+               <item row="5" column="0">
+                <widget class="QLabel" name="label_col_heroes_gm_notes">
+                 <property name="text">
+                  <string>GM Notes</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="5" column="1">
+                <widget class="QSpinBox" name="spin_heroes_col_gm_notes">
+                 <property name="maximum">
+                  <number>400</number>
+                 </property>
+                 <property name="value">
+                  <number>120</number>
+                 </property>
+                </widget>
+               </item>
+               <item row="6" column="0">
+                <widget class="QLabel" name="label_col_heroes_player_notes">
+                 <property name="text">
+                  <string>Player Notes</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="6" column="1">
+                <widget class="QSpinBox" name="spin_heroes_col_player_notes">
+                 <property name="maximum">
+                  <number>400</number>
+                 </property>
+                 <property name="value">
+                  <number>120</number>
+                 </property>
+                </widget>
+               </item>
+               <item row="7" column="0">
+                <widget class="QLabel" name="label_col_heroes_tmp">
+                 <property name="text">
+                  <string>Tmp</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="7" column="1">
+                <widget class="QSpinBox" name="spin_heroes_col_tmp">
+                 <property name="maximum">
+                  <number>150</number>
+                 </property>
+                 <property name="value">
+                  <number>60</number>
+                 </property>
+                </widget>
+               </item>
+               <item row="8" column="0">
+                <widget class="QLabel" name="label_col_heroes_conds">
+                 <property name="text">
+                  <string>Conds</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="8" column="1">
+                <widget class="QSpinBox" name="spin_heroes_col_conds">
+                 <property name="maximum">
+                  <number>400</number>
+                 </property>
+                 <property name="value">
+                  <number>140</number>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item>
+             <widget class="QGroupBox" name="group_columns_monsters">
+              <property name="title">
+               <string>Monsters Table Column Widths (px)</string>
+              </property>
+              <layout class="QGridLayout" name="grid_columns_monsters">
+               <property name="horizontalSpacing">
+                <number>6</number>
+               </property>
+               <property name="verticalSpacing">
+                <number>4</number>
+               </property>
+               <item row="0" column="0">
+                <widget class="QLabel" name="label_col_monsters_act">
+                 <property name="text">
+                  <string>Act</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="1">
+                <widget class="QSpinBox" name="spin_monsters_col_act">
+                 <property name="maximum">
+                  <number>120</number>
+                 </property>
+                 <property name="value">
+                  <number>40</number>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="0">
+                <widget class="QLabel" name="label_col_monsters_health">
+                 <property name="text">
+                  <string>💚</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="1">
+                <widget class="QSpinBox" name="spin_monsters_col_health">
+                 <property name="maximum">
+                  <number>120</number>
+                 </property>
+                 <property name="value">
+                  <number>40</number>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="0">
+                <widget class="QLabel" name="label_col_monsters_name">
+                 <property name="text">
+                  <string>Name</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="1">
+                <widget class="QSpinBox" name="spin_monsters_col_name">
+                 <property name="maximum">
+                  <number>400</number>
+                 </property>
+                 <property name="value">
+                  <number>160</number>
+                 </property>
+                </widget>
+               </item>
+               <item row="3" column="0">
+                <widget class="QLabel" name="label_col_monsters_marker">
+                 <property name="text">
+                  <string>Mk</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="3" column="1">
+                <widget class="QSpinBox" name="spin_monsters_col_marker">
+                 <property name="maximum">
+                  <number>150</number>
+                 </property>
+                 <property name="value">
+                  <number>60</number>
+                 </property>
+                </widget>
+               </item>
+               <item row="4" column="0">
+                <widget class="QLabel" name="label_col_monsters_attack">
+                 <property name="text">
+                  <string>⚔</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="4" column="1">
+                <widget class="QSpinBox" name="spin_monsters_col_attack">
+                 <property name="maximum">
+                  <number>150</number>
+                 </property>
+                 <property name="value">
+                  <number>60</number>
+                 </property>
+                </widget>
+               </item>
+               <item row="5" column="0">
+                <widget class="QLabel" name="label_col_monsters_con">
+                 <property name="text">
+                  <string>Con</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="5" column="1">
+                <widget class="QSpinBox" name="spin_monsters_col_con">
+                 <property name="maximum">
+                  <number>150</number>
+                 </property>
+                 <property name="value">
+                  <number>60</number>
+                 </property>
+                </widget>
+               </item>
+               <item row="6" column="0">
+                <widget class="QLabel" name="label_col_monsters_conds">
+                 <property name="text">
+                  <string>Conds</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="6" column="1">
+                <widget class="QSpinBox" name="spin_monsters_col_conds">
+                 <property name="maximum">
+                  <number>400</number>
+                 </property>
+                 <property name="value">
+                  <number>160</number>
+                 </property>
+                </widget>
+               </item>
+               <item row="7" column="0">
+                <widget class="QLabel" name="label_col_monsters_hp">
+                 <property name="text">
+                  <string>HP</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="7" column="1">
+                <widget class="QSpinBox" name="spin_monsters_col_hp">
+                 <property name="maximum">
+                  <number>150</number>
+                 </property>
+                 <property name="value">
+                  <number>70</number>
+                 </property>
+                </widget>
+               </item>
+               <item row="8" column="0">
+                <widget class="QLabel" name="label_col_monsters_tmp">
+                 <property name="text">
+                  <string>Tmp</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="8" column="1">
+                <widget class="QSpinBox" name="spin_monsters_col_tmp">
+                 <property name="maximum">
+                  <number>150</number>
+                 </property>
+                 <property name="value">
+                  <number>70</number>
+                 </property>
+                </widget>
+               </item>
+               <item row="9" column="0">
+                <widget class="QLabel" name="label_col_monsters_max">
+                 <property name="text">
+                  <string>Max</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="9" column="1">
+                <widget class="QSpinBox" name="spin_monsters_col_max">
+                 <property name="maximum">
+                  <number>150</number>
+                 </property>
+                 <property name="value">
+                  <number>70</number>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <widget class="QGroupBox" name="group_table_text_size">
+            <property name="title">
+             <string>Table Text Size (px)</string>
+            </property>
+            <layout class="QGridLayout" name="grid_text_size">
+             <property name="horizontalSpacing">
+              <number>6</number>
+             </property>
+             <property name="verticalSpacing">
+              <number>4</number>
+             </property>
+             <item row="0" column="0">
+              <widget class="QLabel" name="label_text_size_heroes">
+               <property name="text">
+                <string>Hero Tables</string>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="1">
+              <widget class="QSpinBox" name="spin_heroes_table_text_size">
+               <property name="value">
+                <number>11</number>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="0">
+              <widget class="QLabel" name="label_text_size_monsters">
+               <property name="text">
+                <string>Monster Table</string>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="1">
+              <widget class="QSpinBox" name="spin_monsters_table_text_size">
+               <property name="value">
+                <number>11</number>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="hl_colors_row">
+            <property name="spacing">
+             <number>8</number>
+            </property>
+            <item>
+             <widget class="QGroupBox" name="group_colors_hp">
+              <property name="title">
+               <string>HP &amp; Condition Colors</string>
+              </property>
+              <layout class="QGridLayout" name="grid_colors_hp">
+               <property name="horizontalSpacing">
+                <number>6</number>
+               </property>
+               <property name="verticalSpacing">
+                <number>4</number>
+               </property>
+               <item row="0" column="0">
+                <widget class="QLabel" name="label_color_healthy">
+                 <property name="text">
+                  <string>Healthy (bg)</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="1">
+                <widget class="QPushButton" name="btn_color_healthy">
+                 <property name="toolTip">
+                  <string>Pick Healthy HP color</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="0">
+                <widget class="QLabel" name="label_color_bloodied">
+                 <property name="text">
+                  <string>Bloodied (bg)</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="1">
+                <widget class="QPushButton" name="btn_color_bloodied">
+                 <property name="toolTip">
+                  <string>Pick Bloodied HP color</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="0">
+                <widget class="QLabel" name="label_color_critical">
+                 <property name="text">
+                  <string>Critical (bg)</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="1">
+                <widget class="QPushButton" name="btn_color_critical">
+                 <property name="toolTip">
+                  <string>Pick Critical HP color</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="3" column="0">
+                <widget class="QLabel" name="label_color_down">
+                 <property name="text">
+                  <string>Down (bg)</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="3" column="1">
+                <widget class="QPushButton" name="btn_color_down">
+                 <property name="toolTip">
+                  <string>Pick Down HP color</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="4" column="0">
+                <widget class="QLabel" name="label_color_conditions">
+                 <property name="text">
+                  <string>Conditions (bg)</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="4" column="1">
+                <widget class="QPushButton" name="btn_color_conditions">
+                 <property name="toolTip">
+                  <string>Pick Condition background color</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item>
+             <widget class="QGroupBox" name="group_colors_markers">
+              <property name="title">
+               <string>Marker Colors</string>
+              </property>
+              <layout class="QGridLayout" name="grid_colors_markers">
+               <property name="horizontalSpacing">
+                <number>6</number>
+               </property>
+               <property name="verticalSpacing">
+                <number>4</number>
+               </property>
+               <item row="0" column="0">
+                <widget class="QLabel" name="label_color_marker_bg">
+                 <property name="text">
+                  <string>Marker BG</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="1">
+                <widget class="QPushButton" name="btn_color_marker_bg">
+                 <property name="toolTip">
+                  <string>Pick Marker background color</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="0">
+                <widget class="QLabel" name="label_color_marker_fg">
+                 <property name="text">
+                  <string>Marker Text</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="1">
+                <widget class="QPushButton" name="btn_color_marker_fg">
+                 <property name="toolTip">
+                  <string>Pick Marker text color</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="hl_refresh_ui_row"/>
+          </item>
+         </layout>
+        </widget>
+        <widget class="QWidget" name="tab_vault_viewer">
+         <attribute name="title">
+          <string>Vault Viewer</string>
+         </attribute>
+         <layout class="QVBoxLayout" name="verticalLayout_tab_vault_viewer">
+          <item>
+           <layout class="QGridLayout" name="gridLayout_central">
+            <item row="0" column="0">
+             <layout class="QGridLayout" name="gridLayout_top">
+              <item row="0" column="0">
+               <widget class="QLabel" name="label_vault_path_viewer">
+                <property name="text">
+                 <string>Vault Path:</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="1">
+               <widget class="QLineEdit" name="vault_edit">
+                <property name="text">
+                 <string>C:\TTRPG_Vault\Nimble Vault\Foes</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="2">
+               <widget class="QPushButton" name="btn_browse_vault">
+                <property name="text">
+                 <string>Browse Vault...</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="3">
+               <widget class="QPushButton" name="btn_add_vault">
+                <property name="text">
+                 <string>Add Folder...</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="0" colspan="4">
+               <widget class="QPushButton" name="btn_scan_vault">
+                <property name="text">
+                 <string>Scan Vault -&gt; Load</string>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="0" colspan="4">
+               <widget class="QPushButton" name="btn_export_bestiary">
+                <property name="text">
+                 <string>Export Bestiary JSON</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item row="1" column="0">
+             <widget class="QSplitter" name="splitter_main">
+              <property name="orientation">
+               <enum>Qt::Orientation::Horizontal</enum>
+              </property>
+              <widget class="QWidget" name="widget_left">
+               <layout class="QGridLayout" name="gridLayout_left">
+                <item row="0" column="0">
+                 <widget class="QLabel" name="label_files">
+                  <property name="text">
+                   <string>Files</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="0">
+                 <widget class="QTabWidget" name="tabs_left">
+                  <widget class="QWidget" name="tab_monsters">
+                   <attribute name="title">
+                    <string>Monsters</string>
+                   </attribute>
+                   <layout class="QVBoxLayout" name="verticalLayout_monsters">
+                    <item>
+                     <widget class="QListWidget" name="file_list"/>
+                    </item>
+                   </layout>
+                  </widget>
+                  <widget class="QWidget" name="tab_biomes">
+                   <attribute name="title">
+                    <string>Biomes</string>
+                   </attribute>
+                   <layout class="QVBoxLayout" name="verticalLayout_biomes">
+                    <item>
+                     <widget class="QListWidget" name="biome_list"/>
+                    </item>
+                   </layout>
+                  </widget>
+                  <widget class="QWidget" name="tab_legendary">
+                   <attribute name="title">
+                    <string>Legendary</string>
+                   </attribute>
+                   <layout class="QVBoxLayout" name="verticalLayout_legendary">
+                    <item>
+                     <widget class="QListWidget" name="legend_list"/>
+                    </item>
+                   </layout>
+                  </widget>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+              <widget class="QSplitter" name="splitter_right">
+               <property name="orientation">
+                <enum>Qt::Orientation::Vertical</enum>
+               </property>
+               <widget class="QTabWidget" name="debug_tabs">
+                <widget class="QWidget" name="tab_debug_log">
+                 <attribute name="title">
+                  <string>Debug Log</string>
+                 </attribute>
+                 <layout class="QVBoxLayout" name="verticalLayout_debug">
+                  <item>
+                   <widget class="QTextEdit" name="debug_view">
+                    <property name="readOnly">
+                     <bool>true</bool>
+                    </property>
+                    <property name="placeholderText">
+                     <string>Debug log (vault scan).</string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
+                <widget class="QWidget" name="tab_markdown">
+                 <attribute name="title">
+                  <string>Markdown</string>
+                 </attribute>
+                 <layout class="QVBoxLayout" name="verticalLayout_markdown">
+                  <item>
+                   <widget class="QTextEdit" name="raw_view">
+                    <property name="readOnly">
+                     <bool>true</bool>
+                    </property>
+                    <property name="placeholderText">
+                     <string>Raw markdown for selected file.</string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
+               </widget>
+               <widget class="QTabWidget" name="json_tabs">
+                <widget class="QWidget" name="tab_stat_block">
+                 <attribute name="title">
+                  <string>Stat Block</string>
+                 </attribute>
+                 <layout class="QVBoxLayout" name="verticalLayout_stat">
+                  <item>
+                   <widget class="QTextEdit" name="stat_block_view">
+                    <property name="readOnly">
+                     <bool>true</bool>
+                    </property>
+                    <property name="placeholderText">
+                     <string>Rendered stat block.</string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
+                <widget class="QWidget" name="tab_json_meta">
+                 <attribute name="title">
+                  <string>JSON Assignment</string>
+                 </attribute>
+                 <layout class="QVBoxLayout" name="verticalLayout_json_meta">
+                  <item>
+                   <widget class="QTextEdit" name="json_meta_view">
+                    <property name="readOnly">
+                     <bool>true</bool>
+                    </property>
+                    <property name="placeholderText">
+                     <string>Parsed JSON for selected markdown.</string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
+                <widget class="QWidget" name="tab_json_raw">
+                 <attribute name="title">
+                  <string>JSON Raw</string>
+                 </attribute>
+                 <layout class="QVBoxLayout" name="verticalLayout_json_raw">
+                  <item>
+                   <widget class="QTextEdit" name="json_raw_view">
+                    <property name="readOnly">
+                     <bool>true</bool>
+                    </property>
+                    <property name="placeholderText">
+                     <string>Raw JSON for selected markdown.</string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
+               </widget>
+              </widget>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </widget>
+       </widget>
+       <widget class="QPushButton" name="btn_refresh_ui">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>660</y>
+          <width>81</width>
+          <height>26</height>
+         </rect>
+        </property>
+        <property name="toolTip">
+         <string>Reload the UI with current settings</string>
+        </property>
+        <property name="text">
+         <string>Refresh UI</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="btn_load_config">
+        <property name="geometry">
+         <rect>
+          <x>300</x>
+          <y>660</y>
+          <width>95</width>
+          <height>26</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Load Config...</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="btn_save_config">
+        <property name="geometry">
+         <rect>
+          <x>400</x>
+          <y>660</y>
+          <width>90</width>
+          <height>26</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Save Config</string>
+        </property>
+        <property name="toolTip">
+         <string>Save to current config file</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="btn_save_config_as">
+        <property name="geometry">
+         <rect>
+          <x>495</x>
+          <y>660</y>
+          <width>85</width>
+          <height>26</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Save As...</string>
+        </property>
+        <property name="toolTip">
+         <string>Save config to a new file</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_config_status">
+        <property name="geometry">
+         <rect>
+          <x>100</x>
+          <y>663</y>
+          <width>190</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="styleSheet">
+         <string>color: green; font-style: italic;</string>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="tab_help">
+       <attribute name="title">
+        <string>Help</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout_help">
+        <item>
+         <widget class="QTextEdit" name="help_text">
+          <property name="placeholderText">
+           <string>Help / rules reference...</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>618</width>
+     <height>33</height>
+    </rect>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
+

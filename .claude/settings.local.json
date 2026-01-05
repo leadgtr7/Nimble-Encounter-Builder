@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python:*)",
+      "Bash(find:*)",
+      "Bash(dir:*)",
+      "Bash(if exist NimbleInitiativeTracker.spec del NimbleInitiativeTracker.spec)",
+      "Bash(if exist build rmdir /s /q build)",
+      "Bash(if exist dist rmdir /s /q dist)",
+      "Bash(cd:*)",
+      "Bash(pip install:*)",
+      "Bash(if exist \"c:\\Users\\Jack\\Documents\\Nimble Initiative Tracker\\NimbleInitiativeTracker.spec\" del \"c:\\Users\\Jack\\Documents\\Nimble Initiative Tracker\\NimbleInitiativeTracker.spec\")"
+    ]
+  }
+}

@@ -1,0 +1,8 @@
+{
+
+    "files.readonlyInclude": {
+    "**/uiDesign": true
+}
+
+
+}

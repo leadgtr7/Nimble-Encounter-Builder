@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>SimpleForm</class>
+ <widget class="QWidget" name="SimpleForm">
+  <property name="windowTitle">
+   <string>Simple UI</string>
+  </property>
+
+  <layout class="QVBoxLayout" name="verticalLayout">
+
+   <!-- Color dropdown -->
+   <item>
+    <layout class="QHBoxLayout" name="layout_color">
+     <item>
+      <widget class="QLabel" name="label_color">
+       <property name="text">
+        <string>Color:</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QComboBox" name="colorCombo">
+       <item><property name="text"><string>Red</string></property></item>
+       <item><property name="text"><string>Green</string></property></item>
+       <item><property name="text"><string>Blue</string></property></item>
+      </widget>
+     </item>
+    </layout>
+   </item>
+
+   <!-- Integer input -->
+   <item>
+    <layout class="QHBoxLayout" name="layout_value">
+     <item>
+      <widget class="QLabel" name="label_value">
+       <property name="text">
+        <string>Value:</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QSpinBox" name="valueSpin">
+       <property name="minimum">
+        <number>0</number>
+       </property>
+       <property name="maximum">
+        <number>100</number>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+
+   <!-- Button Box -->
+   <item>
+    <widget class="QDialogButtonBox" name="buttonBox">
+     <property name="standardButtons">
+      <set>QDialogButtonBox::Ok|QDialogButtonBox::Cancel</set>
+     </property>
+     <property name="centerButtons">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
