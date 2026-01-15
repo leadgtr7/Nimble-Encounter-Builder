@@ -55,4 +55,7 @@ snapshots/
 ```
 
 ## License
-Add your license here.
+MIT. See `LICENSE`.
+
+## Third-Party Licenses
+This project ships with PySide6 (LGPL) and PyInstaller (GPL with an exception for distributing bundled apps). Keep their license notices with releases.
