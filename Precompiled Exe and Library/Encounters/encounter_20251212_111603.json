@@ -1,0 +1,174 @@
+{
+  "name": "encounter_20251212_111603",
+  "notes": "",
+  "monsters": [
+    {
+      "name": "Acidpod",
+      "template_file": "C:\\TTRPG_Vault\\Nimble Vault\\Foes\\Monsters\\Forest Denizens\\Acidpod.md",
+      "legendary": false,
+      "level": "1",
+      "armor": "Heavy",
+      "speed": "6",
+      "size": "Small",
+      "saves": "",
+      "flavor": "Every shadow hides a predator, every branch and leaf conspires against you, the forest is alive—and you are not welcome.",
+      "actions": [
+        "Grab.",
+        "DC 12 DEX save or Grappled."
+      ],
+      "special_actions": [
+        "Peeling Bark",
+        "Damage degrades Armor 1 step: Heavy » Medium » None."
+      ],
+      "bloodied_text": "",
+      "last_stand_text": "",
+      "last_stand_hp_value": 0,
+      "biome_loot": [
+        "25 ft. of vines (usable as rope), glowing sap (minor healing properties), moss-covered coins from an ancient era, a brittleleaf with veins that spell out words in Druidic, a pouch of dried herbs, a cluster of rare mushrooms, a handful of acorns (they grow INSTANTLY when placed in water), a small flowerthat never wilts, flute overgrown with moss, a tattered mapto a hidden grove, a dried flower crown."
+      ],
+      "type": "Monsters",
+      "biome": "Forest Denizens",
+      "hp_max": 8,
+      "hp_current": 8,
+      "temp_hp": 0,
+      "last_stand_triggered": false,
+      "dead": false,
+      "group": "Forest Denizens",
+      "active": true,
+      "concentrating": false,
+      "conditions": [],
+      "notes_public": "",
+      "notes_gm": "",
+      "marker_color": "#00AA00",
+      "marker_number": 1,
+      "shown_bloodied_popup": false,
+      "shown_last_stand_popup": false
+    },
+    {
+      "name": "Acidpod",
+      "template_file": "C:\\TTRPG_Vault\\Nimble Vault\\Foes\\Monsters\\Forest Denizens\\Acidpod.md",
+      "legendary": false,
+      "level": "1",
+      "armor": "Heavy",
+      "speed": "6",
+      "size": "Small",
+      "saves": "",
+      "flavor": "Every shadow hides a predator, every branch and leaf conspires against you, the forest is alive—and you are not welcome.",
+      "actions": [
+        "Grab.",
+        "DC 12 DEX save or Grappled."
+      ],
+      "special_actions": [
+        "Peeling Bark",
+        "Damage degrades Armor 1 step: Heavy » Medium » None."
+      ],
+      "bloodied_text": "",
+      "last_stand_text": "",
+      "last_stand_hp_value": 0,
+      "biome_loot": [
+        "25 ft. of vines (usable as rope), glowing sap (minor healing properties), moss-covered coins from an ancient era, a brittleleaf with veins that spell out words in Druidic, a pouch of dried herbs, a cluster of rare mushrooms, a handful of acorns (they grow INSTANTLY when placed in water), a small flowerthat never wilts, flute overgrown with moss, a tattered mapto a hidden grove, a dried flower crown."
+      ],
+      "type": "Monsters",
+      "biome": "Forest Denizens",
+      "hp_max": 8,
+      "hp_current": 8,
+      "temp_hp": 0,
+      "last_stand_triggered": false,
+      "dead": false,
+      "group": "Forest Denizens",
+      "active": true,
+      "concentrating": false,
+      "conditions": [],
+      "notes_public": "",
+      "notes_gm": "",
+      "marker_color": "#00AA00",
+      "marker_number": 2,
+      "shown_bloodied_popup": false,
+      "shown_last_stand_popup": false
+    },
+    {
+      "name": "Tangler",
+      "template_file": "C:\\TTRPG_Vault\\Nimble Vault\\Foes\\Monsters\\Forest Denizens\\Tangler.md",
+      "legendary": false,
+      "level": "2",
+      "armor": "Heavy",
+      "speed": "6",
+      "size": "Medium",
+      "saves": "",
+      "flavor": "Every shadow hides a predator, every branch and leaf conspires against you, the forest is alive—and you are not welcome.",
+      "actions": [
+        "Tangle",
+        "(2×). (Reach 6) 1d6+2. On Hit: Grappled (escape DC 12, or any fire or slashing damage)."
+      ],
+      "special_actions": [
+        "Peeling Bark",
+        "Damage degrades Armor 1 step: Heavy » Medium » None."
+      ],
+      "bloodied_text": "",
+      "last_stand_text": "",
+      "last_stand_hp_value": 0,
+      "biome_loot": [
+        "25 ft. of vines (usable as rope), glowing sap (minor healing properties), moss-covered coins from an ancient era, a brittleleaf with veins that spell out words in Druidic, a pouch of dried herbs, a cluster of rare mushrooms, a handful of acorns (they grow INSTANTLY when placed in water), a small flowerthat never wilts, flute overgrown with moss, a tattered mapto a hidden grove, a dried flower crown."
+      ],
+      "type": "Monsters",
+      "biome": "Forest Denizens",
+      "hp_max": 20,
+      "hp_current": 20,
+      "temp_hp": 0,
+      "last_stand_triggered": false,
+      "dead": false,
+      "group": "Forest Denizens",
+      "active": true,
+      "concentrating": false,
+      "conditions": [],
+      "notes_public": "",
+      "notes_gm": "",
+      "marker_color": "#00AA00",
+      "marker_number": 3,
+      "shown_bloodied_popup": false,
+      "shown_last_stand_popup": false
+    },
+    {
+      "name": "Tangler",
+      "template_file": "C:\\TTRPG_Vault\\Nimble Vault\\Foes\\Monsters\\Forest Denizens\\Tangler.md",
+      "legendary": false,
+      "level": "2",
+      "armor": "Heavy",
+      "speed": "6",
+      "size": "Medium",
+      "saves": "",
+      "flavor": "Every shadow hides a predator, every branch and leaf conspires against you, the forest is alive—and you are not welcome.",
+      "actions": [
+        "Tangle",
+        "(2×). (Reach 6) 1d6+2. On Hit: Grappled (escape DC 12, or any fire or slashing damage)."
+      ],
+      "special_actions": [
+        "Peeling Bark",
+        "Damage degrades Armor 1 step: Heavy » Medium » None."
+      ],
+      "bloodied_text": "",
+      "last_stand_text": "",
+      "last_stand_hp_value": 0,
+      "biome_loot": [
+        "25 ft. of vines (usable as rope), glowing sap (minor healing properties), moss-covered coins from an ancient era, a brittleleaf with veins that spell out words in Druidic, a pouch of dried herbs, a cluster of rare mushrooms, a handful of acorns (they grow INSTANTLY when placed in water), a small flowerthat never wilts, flute overgrown with moss, a tattered mapto a hidden grove, a dried flower crown."
+      ],
+      "type": "Monsters",
+      "biome": "Forest Denizens",
+      "hp_max": 20,
+      "hp_current": 20,
+      "temp_hp": 0,
+      "last_stand_triggered": false,
+      "dead": false,
+      "group": "Forest Denizens",
+      "active": true,
+      "concentrating": false,
+      "conditions": [],
+      "notes_public": "",
+      "notes_gm": "",
+      "marker_color": "#00AA00",
+      "marker_number": 4,
+      "shown_bloodied_popup": false,
+      "shown_last_stand_popup": false
+    }
+  ]
+}

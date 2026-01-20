@@ -1,0 +1,216 @@
+{
+  "name": "Bandits!",
+  "notes": "",
+  "monsters": [
+    {
+      "name": "Bandit Assassin",
+      "template_file": "C:\\TTRPG_Vault\\Nimble Vault\\Foes\\Monsters\\Bandits\\Bandit Assassin.md",
+      "legendary": false,
+      "level": "2",
+      "armor": "None",
+      "speed": "6",
+      "size": "Medium",
+      "saves": "",
+      "flavor": "You’ve got money, they want money… a perfect match! (hand it over)",
+      "actions": [
+        "Poison Blade (2×).",
+        "1d8+2. On damage: Dazed."
+      ],
+      "special_actions": [
+        "Parry",
+        "Treat attacks against you that roll 2 as a miss."
+      ],
+      "bloodied_text": "",
+      "last_stand_text": "",
+      "last_stand_hp_value": 0,
+      "biome_loot": [
+        "VERY valuable item (stolen; its owner may come looking for it, or reward you for its return), kidnapped person, leather armor, chipped blades, old food, fine art or clothes, wagon load of some commodity (salt, nails, wool, etc.), coded letter from a secretive client."
+      ],
+      "type": "Monsters",
+      "biome": "Bandits",
+      "hp_max": 24,
+      "hp_current": 24,
+      "temp_hp": 0,
+      "last_stand_triggered": false,
+      "dead": false,
+      "group": "Bandits",
+      "active": true,
+      "concentrating": false,
+      "conditions": [],
+      "notes_public": "",
+      "notes_gm": "",
+      "marker_color": "#00AA00",
+      "marker_number": 1,
+      "shown_bloodied_popup": false,
+      "shown_last_stand_popup": false
+    },
+    {
+      "name": "Bandit Bruiser",
+      "template_file": "C:\\TTRPG_Vault\\Nimble Vault\\Foes\\Monsters\\Bandits\\Bandit Bruiser.md",
+      "legendary": false,
+      "level": "2",
+      "armor": "Medium",
+      "speed": "6",
+      "size": "Medium",
+      "saves": "",
+      "flavor": "You’ve got money, they want money… a perfect match! (hand it over)",
+      "actions": [
+        "Bash.",
+        "2d8+4."
+      ],
+      "special_actions": [
+        "Parry",
+        "Treat attacks against you that roll 2 as a miss."
+      ],
+      "bloodied_text": "",
+      "last_stand_text": "",
+      "last_stand_hp_value": 0,
+      "biome_loot": [
+        "VERY valuable item (stolen; its owner may come looking for it, or reward you for its return), kidnapped person, leather armor, chipped blades, old food, fine art or clothes, wagon load of some commodity (salt, nails, wool, etc.), coded letter from a secretive client."
+      ],
+      "type": "Monsters",
+      "biome": "Bandits",
+      "hp_max": 24,
+      "hp_current": 24,
+      "temp_hp": 0,
+      "last_stand_triggered": false,
+      "dead": false,
+      "group": "Bandits",
+      "active": true,
+      "concentrating": false,
+      "conditions": [],
+      "notes_public": "",
+      "notes_gm": "",
+      "marker_color": "#00AA00",
+      "marker_number": 2,
+      "shown_bloodied_popup": false,
+      "shown_last_stand_popup": false
+    },
+    {
+      "name": "Bandit Assassin",
+      "template_file": "C:\\TTRPG_Vault\\Nimble Vault\\Foes\\Monsters\\Bandits\\Bandit Assassin.md",
+      "legendary": false,
+      "level": "2",
+      "armor": "None",
+      "speed": "6",
+      "size": "Medium",
+      "saves": "",
+      "flavor": "You’ve got money, they want money… a perfect match! (hand it over)",
+      "actions": [
+        "Poison Blade (2×).",
+        "1d8+2. On damage: Dazed."
+      ],
+      "special_actions": [
+        "Parry",
+        "Treat attacks against you that roll 2 as a miss."
+      ],
+      "bloodied_text": "",
+      "last_stand_text": "",
+      "last_stand_hp_value": 0,
+      "biome_loot": [
+        "VERY valuable item (stolen; its owner may come looking for it, or reward you for its return), kidnapped person, leather armor, chipped blades, old food, fine art or clothes, wagon load of some commodity (salt, nails, wool, etc.), coded letter from a secretive client."
+      ],
+      "type": "Monsters",
+      "biome": "Bandits",
+      "hp_max": 24,
+      "hp_current": 24,
+      "temp_hp": 0,
+      "last_stand_triggered": false,
+      "dead": false,
+      "group": "Bandits",
+      "active": true,
+      "concentrating": false,
+      "conditions": [],
+      "notes_public": "",
+      "notes_gm": "",
+      "marker_color": "#00AA00",
+      "marker_number": 3,
+      "shown_bloodied_popup": false,
+      "shown_last_stand_popup": false
+    },
+    {
+      "name": "Bandit Hunter",
+      "template_file": "C:\\TTRPG_Vault\\Nimble Vault\\Foes\\Monsters\\Bandits\\Bandit Hunter.md",
+      "legendary": false,
+      "level": "1",
+      "armor": "None",
+      "speed": "6",
+      "size": "Medium",
+      "saves": "",
+      "flavor": "You’ve got money, they want money… a perfect match! (hand it over)",
+      "actions": [
+        "Battlebow.",
+        "2d8+2 (Range 12)."
+      ],
+      "special_actions": [
+        "Parry",
+        "Treat attacks against you that roll 2 as a miss."
+      ],
+      "bloodied_text": "",
+      "last_stand_text": "",
+      "last_stand_hp_value": 0,
+      "biome_loot": [
+        "VERY valuable item (stolen; its owner may come looking for it, or reward you for its return), kidnapped person, leather armor, chipped blades, old food, fine art or clothes, wagon load of some commodity (salt, nails, wool, etc.), coded letter from a secretive client."
+      ],
+      "type": "Monsters",
+      "biome": "Bandits",
+      "hp_max": 22,
+      "hp_current": 22,
+      "temp_hp": 0,
+      "last_stand_triggered": false,
+      "dead": false,
+      "group": "Bandits",
+      "active": true,
+      "concentrating": false,
+      "conditions": [],
+      "notes_public": "",
+      "notes_gm": "",
+      "marker_color": "#00AA00",
+      "marker_number": 4,
+      "shown_bloodied_popup": false,
+      "shown_last_stand_popup": false
+    },
+    {
+      "name": "Bandit Assassin",
+      "template_file": "C:\\TTRPG_Vault\\Nimble Vault\\Foes\\Monsters\\Bandits\\Bandit Assassin.md",
+      "legendary": false,
+      "level": "2",
+      "armor": "None",
+      "speed": "6",
+      "size": "Medium",
+      "saves": "",
+      "flavor": "You’ve got money, they want money… a perfect match! (hand it over)",
+      "actions": [
+        "Poison Blade (2×).",
+        "1d8+2. On damage: Dazed."
+      ],
+      "special_actions": [
+        "Parry",
+        "Treat attacks against you that roll 2 as a miss."
+      ],
+      "bloodied_text": "",
+      "last_stand_text": "",
+      "last_stand_hp_value": 0,
+      "biome_loot": [
+        "VERY valuable item (stolen; its owner may come looking for it, or reward you for its return), kidnapped person, leather armor, chipped blades, old food, fine art or clothes, wagon load of some commodity (salt, nails, wool, etc.), coded letter from a secretive client."
+      ],
+      "type": "Monsters",
+      "biome": "Bandits",
+      "hp_max": 24,
+      "hp_current": 24,
+      "temp_hp": 0,
+      "last_stand_triggered": false,
+      "dead": false,
+      "group": "Bandits",
+      "active": true,
+      "concentrating": false,
+      "conditions": [],
+      "notes_public": "",
+      "notes_gm": "",
+      "marker_color": "#00AA00",
+      "marker_number": 5,
+      "shown_bloodied_popup": false,
+      "shown_last_stand_popup": false
+    }
+  ]
+}

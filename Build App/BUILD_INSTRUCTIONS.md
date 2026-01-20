@@ -1,5 +1,7 @@
 # Building Nimble Encounter Builder to EXE
 
+
+Nimble Encounter Builder is an independent product published under the Nimble 3rd Party Creator License. Nimble © Nimble Co.
 This guide explains how to package the Nimble Encounter Builder into a standalone executable (.exe) file.
 
 ## Quick Start
@@ -62,7 +64,7 @@ When sharing the application, you'll need to provide:
 ### Recommended distribution structure:
 ```
 NimbleEncounterBuilder/
-├── Nimble Encounter Builder vYYMMDDNN.exe
+├── Nimble Encounter Builder vMMDDYYYY_HHMMSS.exe
 ├── Bestiary/
 │   ├── monster1.json
 │   ├── monster2.json

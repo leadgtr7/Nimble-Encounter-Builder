@@ -10,7 +10,6 @@ Requirements:
 This will create a single .exe file in the 'dist' folder.
 """
 
-import re
 import subprocess
 import sys
 from datetime import datetime
@@ -46,23 +45,10 @@ def build_executable():
     readme_file = project_root / "README.html"
     splash_file = project_root / "EncounterBuilderAppImage.png"
 
-    # Build name: Nimble Encounter Builder vYYMMDD + incrementing suffix.
-    yymmdd = datetime.now().strftime("%y%m%d")
+    # Build name: Nimble Encounter Builder HHMM-MonDD-YYYY.
+    timestamp = datetime.now().strftime("%H%M-%b%d-%Y")
     dist_dir = project_root.parent / "build"
-    pattern = re.compile(rf"^Nimble Encounter Builder v{yymmdd}(\d{{2}})\.exe$")
-    max_build = 0
-    if dist_dir.exists():
-        # Scan existing builds to increment the daily counter.
-        for path in dist_dir.iterdir():
-            if not path.is_file():
-                continue
-            match = pattern.match(path.name)
-            if match:
-                try:
-                    max_build = max(max_build, int(match.group(1)))
-                except ValueError:
-                    continue
-    app_name = f"Nimble Encounter Builder v{yymmdd}{max_build + 1:02d}"
+    app_name = f"Nimble Encounter Builder {timestamp}"
 
     # Build the PyInstaller command
     cmd = [

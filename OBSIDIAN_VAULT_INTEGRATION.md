@@ -1,5 +1,7 @@
 # Obsidian Vault Integration
 
+
+Nimble Encounter Builder is an independent product published under the Nimble 3rd Party Creator License. Nimble © Nimble Co.
 The Nimble Encounter Builder now supports using an Obsidian vault as the base directory for all file operations.
 
 ## How It Works

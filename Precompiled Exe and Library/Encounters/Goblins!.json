@@ -1,0 +1,176 @@
+{
+  "name": "Goblins!",
+  "notes": "",
+  "monsters": [
+    {
+      "name": "Goblin Ratrider",
+      "template_file": "C:\\TTRPG_Vault\\Nimble Vault\\Foes\\Monsters\\Goblins\\Goblin Ratrider.md",
+      "legendary": false,
+      "level": "2",
+      "armor": "None",
+      "speed": "10",
+      "size": "Medium",
+      "saves": "",
+      "flavor": "Green, cunning, & thriving on the edge of chaos. Will mock you mercilessly if given the chance.",
+      "actions": [
+        "Bite & Stab (2×).",
+        "1d6+2. On crit: Prone."
+      ],
+      "special_actions": [
+        "Haha, Missed Me!",
+        "Whenever an attack misses you, deal 1 psychic damage in return."
+      ],
+      "bloodied_text": "",
+      "last_stand_text": "",
+      "last_stand_hp_value": 0,
+      "biome_loot": [
+        "Live mouse (a snack for later), moldy bread, smooth stones, sharp sticks, teeth (forcibly removed), arrows (surprisingly well-made), lots of blades (jagged, but effective), dead captive (forgot to feed him), shiny junk (random shiny bits of metal, broken glass, and buttons), slug farm (a jar of slimy, wriggling slugs), \"Potion\" (suspiciously colored liquid in a dirty bottle), unidentifiable jerky. A filthy notebook tracking bizarre trades and bets, boots (too big)."
+      ],
+      "type": "Monsters",
+      "biome": "Goblins",
+      "hp_max": 30,
+      "hp_current": 30,
+      "temp_hp": 0,
+      "last_stand_triggered": false,
+      "dead": false,
+      "group": "Goblins",
+      "active": true,
+      "concentrating": false,
+      "conditions": [],
+      "notes_public": "",
+      "notes_gm": "",
+      "marker_color": "#0000FF",
+      "marker_number": 1,
+      "shown_bloodied_popup": false,
+      "shown_last_stand_popup": false
+    },
+    {
+      "name": "Goblin Ratrider",
+      "template_file": "C:\\TTRPG_Vault\\Nimble Vault\\Foes\\Monsters\\Goblins\\Goblin Ratrider.md",
+      "legendary": false,
+      "level": "2",
+      "armor": "None",
+      "speed": "10",
+      "size": "Medium",
+      "saves": "",
+      "flavor": "Green, cunning, & thriving on the edge of chaos. Will mock you mercilessly if given the chance.",
+      "actions": [
+        "Bite & Stab (2×).",
+        "1d6+2. On crit: Prone."
+      ],
+      "special_actions": [
+        "Haha, Missed Me!",
+        "Whenever an attack misses you, deal 1 psychic damage in return."
+      ],
+      "bloodied_text": "",
+      "last_stand_text": "",
+      "last_stand_hp_value": 0,
+      "biome_loot": [
+        "Live mouse (a snack for later), moldy bread, smooth stones, sharp sticks, teeth (forcibly removed), arrows (surprisingly well-made), lots of blades (jagged, but effective), dead captive (forgot to feed him), shiny junk (random shiny bits of metal, broken glass, and buttons), slug farm (a jar of slimy, wriggling slugs), \"Potion\" (suspiciously colored liquid in a dirty bottle), unidentifiable jerky. A filthy notebook tracking bizarre trades and bets, boots (too big)."
+      ],
+      "type": "Monsters",
+      "biome": "Goblins",
+      "hp_max": 30,
+      "hp_current": 30,
+      "temp_hp": 0,
+      "last_stand_triggered": false,
+      "dead": false,
+      "group": "Goblins",
+      "active": true,
+      "concentrating": false,
+      "conditions": [],
+      "notes_public": "",
+      "notes_gm": "",
+      "marker_color": "#0000FF",
+      "marker_number": 2,
+      "shown_bloodied_popup": false,
+      "shown_last_stand_popup": false
+    },
+    {
+      "name": "Goblin Ratrider",
+      "template_file": "C:\\TTRPG_Vault\\Nimble Vault\\Foes\\Monsters\\Goblins\\Goblin Ratrider.md",
+      "legendary": false,
+      "level": "2",
+      "armor": "None",
+      "speed": "10",
+      "size": "Medium",
+      "saves": "",
+      "flavor": "Green, cunning, & thriving on the edge of chaos. Will mock you mercilessly if given the chance.",
+      "actions": [
+        "Bite & Stab (2×).",
+        "1d6+2. On crit: Prone."
+      ],
+      "special_actions": [
+        "Haha, Missed Me!",
+        "Whenever an attack misses you, deal 1 psychic damage in return."
+      ],
+      "bloodied_text": "",
+      "last_stand_text": "",
+      "last_stand_hp_value": 0,
+      "biome_loot": [
+        "Live mouse (a snack for later), moldy bread, smooth stones, sharp sticks, teeth (forcibly removed), arrows (surprisingly well-made), lots of blades (jagged, but effective), dead captive (forgot to feed him), shiny junk (random shiny bits of metal, broken glass, and buttons), slug farm (a jar of slimy, wriggling slugs), \"Potion\" (suspiciously colored liquid in a dirty bottle), unidentifiable jerky. A filthy notebook tracking bizarre trades and bets, boots (too big)."
+      ],
+      "type": "Monsters",
+      "biome": "Goblins",
+      "hp_max": 30,
+      "hp_current": 30,
+      "temp_hp": 0,
+      "last_stand_triggered": false,
+      "dead": false,
+      "group": "Goblins",
+      "active": true,
+      "concentrating": false,
+      "conditions": [],
+      "notes_public": "",
+      "notes_gm": "",
+      "marker_color": "#0000FF",
+      "marker_number": 3,
+      "shown_bloodied_popup": false,
+      "shown_last_stand_popup": false
+    },
+    {
+      "name": "Goblin Taskmaster",
+      "template_file": "C:\\TTRPG_Vault\\Nimble Vault\\Foes\\Monsters\\Goblins\\Goblin Taskmaster.md",
+      "legendary": false,
+      "level": "2",
+      "armor": "Medium",
+      "speed": "6",
+      "size": "Small",
+      "saves": "",
+      "flavor": "Green, cunning, & thriving on the edge of chaos. Will mock you mercilessly if given the chance.",
+      "actions": [
+        "Stab.",
+        "1d6+2 (or Shoot, Range 8). Then:",
+        "Get in here!",
+        "Call a goblin minion to the fight."
+      ],
+      "special_actions": [
+        "Haha, Missed Me!",
+        "Whenever an attack misses you, deal 1 psychic damage in return."
+      ],
+      "bloodied_text": "",
+      "last_stand_text": "",
+      "last_stand_hp_value": 0,
+      "biome_loot": [
+        "Live mouse (a snack for later), moldy bread, smooth stones, sharp sticks, teeth (forcibly removed), arrows (surprisingly well-made), lots of blades (jagged, but effective), dead captive (forgot to feed him), shiny junk (random shiny bits of metal, broken glass, and buttons), slug farm (a jar of slimy, wriggling slugs), \"Potion\" (suspiciously colored liquid in a dirty bottle), unidentifiable jerky. A filthy notebook tracking bizarre trades and bets, boots (too big)."
+      ],
+      "type": "Monsters",
+      "biome": "Goblins",
+      "hp_max": 30,
+      "hp_current": 30,
+      "temp_hp": 0,
+      "last_stand_triggered": false,
+      "dead": false,
+      "group": "Goblins",
+      "active": true,
+      "concentrating": false,
+      "conditions": [],
+      "notes_public": "",
+      "notes_gm": "",
+      "marker_color": "#0000FF",
+      "marker_number": 4,
+      "shown_bloodied_popup": false,
+      "shown_last_stand_popup": false
+    }
+  ]
+}

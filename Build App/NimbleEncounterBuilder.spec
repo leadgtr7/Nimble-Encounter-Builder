@@ -75,7 +75,7 @@ exe = EXE(
     a.zipfiles,
     a.datas,
     [],
-    name='Nimble Encounter Builder v26010405',
+    name='Nimble Encounter Builder v01192026_202940',
     debug=False,
     bootloader_ignore_signals=False,
     strip=False,

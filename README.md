@@ -1,5 +1,7 @@
 # Nimble Encounter Builder
 
+
+Nimble Encounter Builder is an independent product published under the Nimble 3rd Party Creator License. Nimble © Nimble Co.
 ## Note
 This app was built with heavy use of AI tools. I won't pretend that I know exactly how everything works, but I do understand the structure. With that said, if you create a pull request I may struggle with reviewing and approving. Please be patient with me.
 
@@ -24,7 +26,7 @@ python NimbleEncounterBuilder.py
 
 ## Build
 The build output name is auto-versioned as:
-`Nimble Encounter Builder vYYMMDDNN.exe`
+`Nimble Encounter Builder vMMDDYYYY_HHMMSS.exe`
 
 Build from the repo root:
 ```bash

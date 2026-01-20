@@ -1,5 +1,7 @@
 # Release Checklist
 
+
+Nimble Encounter Builder is an independent product published under the Nimble 3rd Party Creator License. Nimble © Nimble Co.
 ## Preflight
 - Update version tag used in build output (auto: vYYMMDDNN).
 - Review `PRIVACY_CLEANUP.md` exclusions.

@@ -11,7 +11,6 @@ Requirements:
     pip install pyinstaller
 """
 
-import re
 import subprocess
 import sys
 from datetime import datetime
@@ -76,22 +75,8 @@ exe = EXE(
 def create_spec_file():
     """Create a PyInstaller spec file."""
     project_root = Path(__file__).resolve().parents[1]
-    yymmdd = datetime.now().strftime("%y%m%d")
-    dist_dir = project_root.parent / "build"
-    pattern = re.compile(rf"^Nimble Encounter Builder v{yymmdd}(\d{{2}})\.exe$")
-    max_build = 0
-    if dist_dir.exists():
-        # Scan existing builds to increment the daily counter.
-        for path in dist_dir.iterdir():
-            if not path.is_file():
-                continue
-            match = pattern.match(path.name)
-            if match:
-                try:
-                    max_build = max(max_build, int(match.group(1)))
-                except ValueError:
-                    continue
-    app_name = f"Nimble Encounter Builder v{yymmdd}{max_build + 1:02d}"
+    timestamp = datetime.now().strftime("%H%M-%b%d-%Y")
+    app_name = f"Nimble Encounter Builder {timestamp}"
     main_script = project_root / "NimbleEncounterBuilder.py"
     ui_dir = project_root / "uiDesign"
     ui_file = ui_dir / "nimbleHandy.ui"

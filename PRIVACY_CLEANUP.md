@@ -1,5 +1,7 @@
 # Privacy & Personal Data Cleanup
 
+
+Nimble Encounter Builder is an independent product published under the Nimble 3rd Party Creator License. Nimble © Nimble Co.
 This document explains what to exclude when sharing the project and how to keep
 personal vault paths and session data out of the repo.
 

@@ -1,5 +1,7 @@
 # Instruction Manual - Nimble Encounter Builder
 
+
+Nimble Encounter Builder is an independent product published under the Nimble 3rd Party Creator License. Nimble © Nimble Co.
 This manual walks through setup and the main workflows.
 
 ## Getting Started

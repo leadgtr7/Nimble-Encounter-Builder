@@ -11,7 +11,6 @@ Requirements:
 """
 
 import os
-import re
 import subprocess
 import sys
 from datetime import datetime
@@ -53,22 +52,8 @@ def check_dependencies():
 
 
 def _next_build_name(project_root: Path) -> str:
-    yymmdd = datetime.now().strftime("%y%m%d")
-    dist_dir = project_root.parent / "build"
-    pattern = re.compile(rf"^Nimble Encounter Builder v{yymmdd}(\d{{2}})\.exe$")
-    max_build = 0
-    if dist_dir.exists():
-        # Scan existing builds to increment the daily counter.
-        for path in dist_dir.iterdir():
-            if not path.is_file():
-                continue
-            match = pattern.match(path.name)
-            if match:
-                try:
-                    max_build = max(max_build, int(match.group(1)))
-                except ValueError:
-                    continue
-    return f"Nimble Encounter Builder v{yymmdd}{max_build + 1:02d}"
+    timestamp = datetime.now().strftime("%H%M-%b%d-%Y")
+    return f"Nimble Encounter Builder {timestamp}"
 
 
 def create_spec_file(pyside_path):

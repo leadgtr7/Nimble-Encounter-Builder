@@ -16,6 +16,7 @@ from PySide6.QtCore import QFile, QIODevice, Qt
 from PySide6.QtGui import QColor, QPalette, QPixmap
 from PySide6.QtWidgets import (
     QApplication,
+    QBoxLayout,
     QCheckBox,
     QComboBox,
     QLabel,
@@ -26,6 +27,7 @@ from PySide6.QtWidgets import (
     QTableWidget,
     QTextEdit,
     QTabWidget,
+    QVBoxLayout,
     QWidget,
 )
 from PySide6.QtUiTools import QUiLoader
@@ -49,6 +51,11 @@ from tabs.heroes_tab import HeroesTabController
 class NimbleMainApp:
     """Load the UI, initialize core services, and attach tab controllers."""
 
+    LICENSE_BANNER_TEXT = (
+        "Nimble Encounter Builder is an independent product published under the "
+        "Nimble 3rd Party Creator License. Nimble © Nimble Co."
+    )
+
     def __init__(self, ui_path: Path):
         self.ui_path = ui_path
 
@@ -68,6 +75,8 @@ class NimbleMainApp:
             combat_tab_widget = self.window.findChild(QWidget, "tab_combat")
             if combat_tab_widget:
                 tab_widget.setCurrentWidget(combat_tab_widget)
+
+        self._add_license_banners()
 
         # Core manager
         self.manager = CombatManager()
@@ -255,6 +264,60 @@ class NimbleMainApp:
                 help_text_widget.setPlainText(f"Error loading help file: {exc}")
         else:
             help_text_widget.setPlainText("Help file not found. Please ensure README.html exists in the application directory.")
+
+    def _add_license_banners(self) -> None:
+        """Add a small license banner to the bottom of each main tab."""
+        tab_names = [
+            "tab_combat",
+            "tab_bestiary",
+            "tab_heroes",
+            "tab_config",
+            "tab_vault_viewer",
+            "tab_help",
+        ]
+        for name in tab_names:
+            tab = self.window.findChild(QWidget, name)
+            if tab is None:
+                continue
+            if tab.findChild(QLabel, "label_license_banner"):
+                continue
+            layout = tab.layout()
+            banner = QLabel(self.LICENSE_BANNER_TEXT, tab)
+            banner.setObjectName("label_license_banner")
+            banner.setAlignment(Qt.AlignmentFlag.AlignCenter)
+            banner.setWordWrap(True)
+            banner.setStyleSheet(
+                "color: #9aa0a6; font-size: 10px; padding: 4px 8px; "
+                "border-top: 1px solid #3a3a3a;"
+            )
+            if layout is not None and isinstance(layout, QBoxLayout):
+                layout.addWidget(banner)
+            else:
+                banner_height = 36
+
+                def _position_banner(event=None, widget=tab, label=banner):
+                    bottom_widgets = [
+                        child
+                        for child in widget.findChildren(QWidget)
+                        if child is not label
+                        and child.geometry().top() > widget.height() * 0.6
+                    ]
+                    if bottom_widgets:
+                        top_edge = min(child.geometry().top() for child in bottom_widgets)
+                        y_pos = max(0, top_edge - banner_height - 4)
+                    else:
+                        y_pos = max(0, widget.height() - banner_height)
+                    label.setGeometry(0, y_pos, widget.width(), banner_height)
+
+                _position_banner()
+                original_resize = tab.resizeEvent
+
+                def _resize_event(event, handler=original_resize):
+                    if handler is not None:
+                        handler(event)
+                    _position_banner(event)
+
+                tab.resizeEvent = _resize_event
 
     def _init_log_buttons(self) -> None:
         """Connect the Save Log and Load Log buttons."""
