@@ -69,14 +69,14 @@ After a successful build, you'll find:
 
 ```
 dist/
-  └── Nimble Encounter Builder vMMDDYYYY_HHMMSS.exe  (standalone executable)
+  └── Nimble Encounter Builder HHMM-MonDD-YYYY.exe  (standalone executable)
 ```
 
 ## Distribution
 
 To distribute your application:
 
-1. **Copy the executable**: `dist/Nimble Encounter Builder vMMDDYYYY_HHMMSS.exe`
+1. **Copy the executable**: `dist/Nimble Encounter Builder HHMM-MonDD-YYYY.exe`
 
 2. **Include supporting files** (optional):
    - `Bestiary/` folder (if you have custom monsters)
@@ -86,7 +86,7 @@ To distribute your application:
 3. **Create a distribution folder structure**:
    ```
    NimbleEncounterBuilder/
-     ├── Nimble Encounter Builder vMMDDYYYY_HHMMSS.exe
+     ├── Nimble Encounter Builder HHMM-MonDD-YYYY.exe
      ├── Bestiary/
      │   └── (monster JSON files)
      └── README.html
@@ -113,7 +113,7 @@ pip install pyinstaller
 1. **Try running from command line** to see error messages:
    ```bash
    cd dist
-   Nimble Encounter Builder vMMDDYYYY_HHMMSS.exe
+   Nimble Encounter Builder HHMM-MonDD-YYYY.exe
    ```
 
 2. **Check antivirus**: Some antivirus software flags PyInstaller executables. Add an exception.
@@ -156,7 +156,7 @@ Before distributing:
 1. **Test on your machine**:
    ```bash
    cd dist
-   Nimble Encounter Builder vMMDDYYYY_HHMMSS.exe
+   Nimble Encounter Builder HHMM-MonDD-YYYY.exe
    ```
 
 2. **Test all features**:

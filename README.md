@@ -26,7 +26,7 @@ python NimbleEncounterBuilder.py
 
 ## Build
 The build output name is auto-versioned as:
-`Nimble Encounter Builder vMMDDYYYY_HHMMSS.exe`
+`Nimble Encounter Builder HHMM-MonDD-YYYY.exe`
 
 Build from the repo root:
 ```bash

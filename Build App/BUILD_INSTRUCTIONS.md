@@ -64,7 +64,7 @@ When sharing the application, you'll need to provide:
 ### Recommended distribution structure:
 ```
 NimbleEncounterBuilder/
-├── Nimble Encounter Builder vMMDDYYYY_HHMMSS.exe
+├── Nimble Encounter Builder HHMM-MonDD-YYYY.exe
 ├── Bestiary/
 │   ├── monster1.json
 │   ├── monster2.json
