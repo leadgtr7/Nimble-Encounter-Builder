@@ -109,6 +109,10 @@ class CombatManager:
         # Marker palette is driven by configuration
         self._marker_palette: List[str] = list(config.CONFIG.marker_palette)
 
+        # Optional difficulty profile for UIs that do not track heroes.
+        self._difficulty_player_count: int | None = None
+        self._difficulty_average_party_level: float | None = None
+
     # --------------------------------------------------------------------
     # Internal helpers
     # --------------------------------------------------------------------
@@ -304,6 +308,58 @@ class CombatManager:
             # No renumbering
             self._changed()
 
+    def clear_monsters(self):
+        """Remove all monsters from the current encounter."""
+        if not self.monsters:
+            return
+        count = len(self.monsters)
+        self.monsters.clear()
+        self.group_color_map = {}
+        self._log(f"Encounter cleared ({count} monsters removed).")
+        self._changed()
+
+    def set_monster_active(self, monster: MonsterInstance, active: bool):
+        if monster not in self.monsters:
+            return
+        monster.active = bool(active)
+        self._log(f"Monster {monster.name} is {'active' if monster.active else 'inactive'}.")
+        self._changed()
+
+    def set_monster_concentrating(self, monster: MonsterInstance, concentrating: bool):
+        if monster not in self.monsters:
+            return
+        monster.concentrating = bool(concentrating)
+        state = "concentrating" if monster.concentrating else "not concentrating"
+        self._log(f"Monster {monster.name} is {state}.")
+        self._changed()
+
+    def set_monster_conditions(self, monster: MonsterInstance, conditions: list[str]):
+        if monster not in self.monsters:
+            return
+        normalized: list[str] = []
+        for cond in conditions:
+            value = str(cond).strip()
+            if value and value not in normalized:
+                normalized.append(value)
+        monster.conditions = normalized
+        if config.CONFIG.log_condition_changes:
+            text = ", ".join(normalized) if normalized else "none"
+            self._log(f"Monster {monster.name} conditions set: {text}")
+        self._changed()
+
+    def reset_monster_combat_state(self, monster: MonsterInstance):
+        if monster not in self.monsters:
+            return
+        monster.hp_current = monster.hp_max
+        monster.temp_hp = 0
+        monster.dead = False
+        monster.last_stand_triggered = False
+        monster.concentrating = False
+        for cond in ("Dying", "Last Stand"):
+            monster.remove_condition(cond)
+        self._log(f"Monster {monster.name} combat state reset.")
+        self._changed()
+
     # ====================================================================
     # 5. Combat Actions
     # ====================================================================
@@ -483,6 +539,42 @@ class CombatManager:
         """Calculate the sum of all hero levels."""
         return sum(getattr(h, "level", 0) for h in self.heroes)
 
+    def set_difficulty_profile(self, player_count: int, average_party_level: float):
+        """
+        Set the party assumptions used for encounter difficulty when a UI
+        does not track individual heroes.
+        """
+        try:
+            count = int(player_count)
+            average_level = float(average_party_level)
+        except (TypeError, ValueError):
+            raise ValueError("Difficulty profile requires numeric player count and level.")
+        if count <= 0:
+            raise ValueError("Player count must be greater than zero.")
+        if average_level <= 0:
+            raise ValueError("Average party level must be greater than zero.")
+        self._difficulty_player_count = count
+        self._difficulty_average_party_level = average_level
+
+    def clear_difficulty_profile(self):
+        """Return difficulty calculations to hero-list based behavior."""
+        self._difficulty_player_count = None
+        self._difficulty_average_party_level = None
+
+    def difficulty_party_total_level(self) -> float:
+        """
+        Return the total party level used for encounter difficulty.
+
+        UIs that do not track heroes can set a party profile; otherwise the
+        existing hero total is used for backward compatibility.
+        """
+        if (
+            self._difficulty_player_count is not None
+            and self._difficulty_average_party_level is not None
+        ):
+            return self._difficulty_player_count * self._difficulty_average_party_level
+        return float(self.total_hero_levels())
+
     def total_monster_levels(self) -> int:
         """
         Calculate the sum of all non-dead monster levels.
@@ -520,11 +612,11 @@ class CombatManager:
         Calculate the encounter difficulty ratio (monster levels / hero levels).
         Returns 0.0 if there are no heroes.
         """
-        hero_total = self.total_hero_levels()
-        if hero_total == 0:
+        party_total = self.difficulty_party_total_level()
+        if party_total == 0:
             return 0.0
         monster_total = self.total_monster_levels()
-        return monster_total / hero_total
+        return monster_total / party_total
 
     def encounter_difficulty_label(self) -> str:
         """

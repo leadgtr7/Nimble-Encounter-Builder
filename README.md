@@ -24,6 +24,21 @@ python NimbleEncounterBuilder.py
 2) On first run, choose a config location (vault JSON). If you skip, the app prompts for a base folder and creates `data/Encounters`, `data/Heroes`, and `data/Combat Logs`.
 3) Open the Config tab to set paths and preferences.
 
+## NiceGUI Encounter Front End
+The new web front end is a parallel app. It reuses the same monster data,
+encounter JSON files, HP/status logic, and external config file while leaving
+the PySide6 desktop UI in place.
+
+Install and run:
+```bash
+pip install -r requirements-nicegui.txt
+python nicegui_app.py
+```
+
+Open `http://127.0.0.1:8789/`. The NiceGUI app does not expose config editing;
+set paths and defaults in the configured JSON file instead. Optional defaults:
+`default_player_count` and `default_average_party_level`.
+
 ## Build
 The build output name is auto-versioned as:
 `Nimble Encounter Builder HHMM-MonDD-YYYY.exe`

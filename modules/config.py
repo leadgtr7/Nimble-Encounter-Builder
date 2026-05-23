@@ -236,6 +236,10 @@ class TrackerConfig:
     # --------------------------
     # Encounter Difficulty
     # --------------------------
+    # Defaults used by front ends that do not track individual heroes.
+    default_player_count: int = 4
+    default_average_party_level: float = 1.0
+
     # Thresholds for encounter difficulty based on ratio of monster levels to hero levels.
     #
     # Easy: Monster levels < 50% of hero levels
