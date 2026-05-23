@@ -41,6 +41,7 @@ for path in (PROJECT_ROOT, PROJECT_UI_DIR):
 from modules import config
 from modules import make_snapshot
 from modules.combatManager import CombatManager
+from modules.services import AppServices, create_default_services
 from tabs.bestiary_tab import BestiaryTabController
 from tabs.combat_tab import CombatTabController
 from tabs.config_tab import ConfigTabController
@@ -76,15 +77,19 @@ class NimbleMainApp:
             if combat_tab_widget:
                 tab_widget.setCurrentWidget(combat_tab_widget)
 
-        self._add_license_banners()
-
-        # Core manager
-        self.manager = CombatManager()
-
         # Optional log widget (Combat Extras tab)
         self.combat_log: Optional[QTextEdit] = self.window.findChild(
             QTextEdit, "combat_log_text"
         )
+
+        self._add_license_banners()
+
+        # Core services and manager
+        self.services: AppServices = create_default_services(
+            project_root=PROJECT_ROOT,
+            log_fn=self._append_log,
+        )
+        self.manager = CombatManager(storage=self.services.storage)
 
         # Wire logging
         self.manager.on_log = self._append_log
@@ -107,6 +112,7 @@ class NimbleMainApp:
         self._init_config_tab()
         self._init_help_tab()
         self._init_log_buttons()
+        self._attach_ui_contributions()
         self._prompt_load_latest_log()
 
         # Install close event handler to auto-save log
@@ -116,6 +122,16 @@ class NimbleMainApp:
     # ------------------------------------------------------------------#
     # Tabs
     # ------------------------------------------------------------------#
+
+    def _attach_ui_contributions(self) -> None:
+        """Let optional plugins attach Qt UI behavior after core tabs exist."""
+        for contribution in self.services.extensions.ui_contributions.values():
+            try:
+                contribution.attach(self)
+                self._append_log(f"Loaded UI plugin: {contribution.label}")
+            except Exception as exc:  # noqa: BLE001
+                label = getattr(contribution, "label", getattr(contribution, "id", "unknown"))
+                self._append_log(f"UI plugin '{label}' failed to attach: {exc}")
 
     def _init_bestiary_tab(self) -> None:
         """Setup the Bestiary tab controller."""

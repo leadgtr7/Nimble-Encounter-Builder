@@ -77,8 +77,8 @@ from modules.combatants import (
     Encounter,
 )
 
-from modules import persistence
 from modules import config
+from modules.services import JsonStorageService, StorageService
 
 
 class CombatManager:
@@ -92,10 +92,11 @@ class CombatManager:
     # 1. Constructor / event hooks
     # --------------------------------------------------------------------
 
-    def __init__(self):
+    def __init__(self, storage: StorageService | None = None):
         self.heroes: List[Hero] = []
         self.monsters: List[MonsterInstance] = []
         self.monster_library: List[MonsterTemplate] = []
+        self.storage: StorageService = storage or JsonStorageService()
 
         # Map marker management
         self.group_color_map: Dict[str, str] = {}   # group string -> hex color
@@ -226,7 +227,7 @@ class CombatManager:
     # ====================================================================
 
     def load_monster_library(self, path: str):
-        self.monster_library = persistence.load_monster_library(path)
+        self.monster_library = self.storage.load_monster_library(path)
         self._log(f"Loaded {len(self.monster_library)} monsters from library.")
         self._changed()
 
@@ -414,7 +415,7 @@ class CombatManager:
     # ====================================================================
 
     def load_party(self, path: str):
-        party = persistence.load_party(path)
+        party = self.storage.load_party(path)
         self.heroes = party.heroes
         self._log(f"Loaded party: {party.name} ({len(self.heroes)} heroes)")
         self._changed()
@@ -422,7 +423,7 @@ class CombatManager:
     def save_party(self, path: str, name: Optional[str] = None):
         party = Party.new(name or "Party")
         party.heroes = self.heroes.copy()
-        persistence.save_party(path, party)
+        self.storage.save_party(path, party)
         self._log(f"Saved party: {party.name}")
 
     # ====================================================================
@@ -430,7 +431,7 @@ class CombatManager:
     # ====================================================================
 
     def load_encounter(self, path: str):
-        enc = persistence.load_encounter(path)
+        enc = self.storage.load_encounter(path)
         self.monsters = enc.monsters
         self._log(f"Loaded encounter: {enc.name} ({len(self.monsters)} monsters)")
         self._rebuild_marker_maps()
@@ -439,7 +440,7 @@ class CombatManager:
     def save_encounter(self, path: str, name: Optional[str] = None):
         enc = Encounter.new(name or "Encounter")
         enc.monsters = self.monsters.copy()
-        persistence.save_encounter(path, enc)
+        self.storage.save_encounter(path, enc)
         self._log(f"Saved encounter: {enc.name}")
 
     # ====================================================================
@@ -452,7 +453,7 @@ class CombatManager:
         """
         if not config.CONFIG.autosave_enabled:
             return
-        persistence.autosave_session(
+        self.storage.autosave_session(
             self.heroes,
             self.monsters,
             path=config.CONFIG.autosave_path,
@@ -463,7 +464,7 @@ class CombatManager:
         Load a session from the configured autosave path by default.
         """
         actual_path = path or config.CONFIG.autosave_path
-        heroes, monsters = persistence.load_session(actual_path)
+        heroes, monsters = self.storage.load_session(actual_path)
         self.heroes = heroes
         self.monsters = monsters
         self._log(
