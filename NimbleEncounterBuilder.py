@@ -8,6 +8,7 @@ Bestiary tab is powered by tabs.bestiary_tab.BestiaryTabController.
 
 from __future__ import annotations
 
+import os
 import sys
 from pathlib import Path
 from typing import Optional
@@ -47,6 +48,26 @@ from tabs.combat_tab import CombatTabController
 from tabs.config_tab import ConfigTabController
 from tabs.hero_dialog import show_add_edit_hero_dialog
 from tabs.heroes_tab import HeroesTabController
+
+SNAPSHOT_DISABLE_ARGS = {"--no-snapshot", "--no-snapshots"}
+SNAPSHOT_DISABLE_ENV = "NIMBLE_SKIP_SNAPSHOT"
+
+
+def _snapshot_disabled(argv: list[str]) -> bool:
+    disabled_by_arg = False
+    filtered_args = [argv[0]]
+    for arg in argv[1:]:
+        if arg in SNAPSHOT_DISABLE_ARGS:
+            disabled_by_arg = True
+            continue
+        filtered_args.append(arg)
+
+    if disabled_by_arg:
+        argv[:] = filtered_args
+
+    env_value = os.environ.get(SNAPSHOT_DISABLE_ENV, "").strip().lower()
+    disabled_by_env = env_value in {"1", "true", "yes", "on"}
+    return disabled_by_arg or disabled_by_env
 
 
 class NimbleMainApp:
@@ -872,7 +893,7 @@ class NimbleMainApp:
 
 def main() -> int:
     # Optional snapshot on launch for quick backups (skip when frozen in exe).
-    if not getattr(sys, "frozen", False):
+    if not _snapshot_disabled(sys.argv) and not getattr(sys, "frozen", False):
         try:
             snap_path = make_snapshot.make_snapshot()
             print(f"[snapshot] Created {snap_path}")
