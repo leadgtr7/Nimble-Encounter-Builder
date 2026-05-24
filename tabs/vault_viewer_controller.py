@@ -302,7 +302,7 @@ class VaultViewerController:
                 except Exception:
                     self.json_raw_view.setPlainText(str(meta))
             if self.stat_block_view:
-                self.stat_block_view.setHtml(render_stat_block(meta))
+                self.stat_block_view.setHtml(render_stat_block(meta, mode="full"))
         else:
             if self.json_meta_view:
                 self.json_meta_view.clear()
@@ -339,6 +339,7 @@ class VaultViewerController:
         if flavor:
             parts.append(f"<b>flavor</b>: {flavor}")
         specials = meta.get("special_actions", []) or []
+        passives = meta.get("passives", []) or []
         actions = meta.get("actions", []) or []
         bloodied = meta.get("bloodied", "")
         last_stand = meta.get("last_stand", "")
@@ -346,6 +347,7 @@ class VaultViewerController:
         loot = meta.get("biome_loot", [])
 
         for block in (
+            fmt_list("passives", passives),
             fmt_list("special_actions", specials),
             fmt_list("actions", actions),
             fmt_list("biome_loot", loot),
@@ -444,6 +446,39 @@ class VaultViewerController:
             rest = VaultViewerController._strip_markdown(m.group(2).strip())
             return [title, rest] if rest else [title]
         return [text]
+
+    @staticmethod
+    def _is_plain_section_header(text: str) -> bool:
+        stripped = text.strip()
+        if stripped.startswith("#"):
+            return True
+        if not (stripped.startswith("**") and stripped.endswith("**")):
+            return False
+        label = VaultViewerController._strip_markdown(stripped).strip().strip(":")
+        return bool(re.fullmatch(r"[A-Za-z ]+", label))
+
+    @classmethod
+    def _parse_bullet_section(cls, lines: List[str], headers: set[str]) -> List[str]:
+        items: List[str] = []
+        in_section = False
+        for raw in lines:
+            stripped = raw.strip()
+            label = cls._strip_markdown(stripped).strip().strip(":").lower()
+            if label in headers:
+                in_section = True
+                continue
+            if not in_section:
+                continue
+            if not stripped:
+                continue
+            if cls._is_plain_section_header(stripped):
+                break
+            if stripped.startswith(("* ", "- ")):
+                items.append(cls._clean_text(stripped[2:]))
+                continue
+            if items and (raw.startswith((" ", "\t")) or not stripped.startswith((">", "#"))):
+                items[-1] = cls._clean_text(f"{items[-1]} {stripped}")
+        return items
 
     def _parse_biome_summary(self, path: Path) -> Tuple[Dict[str, List[str]], str, List[str]]:
         """Parse biome-level markdown (folder file) for shared actions, flavor, loot."""
@@ -581,20 +616,16 @@ class VaultViewerController:
                 if text:
                     special_actions.append(text)
 
-        actions: List[str] = []
-        in_actions = False
-        for l in lines:
-            ls = l.strip()
-            if ls.upper().startswith("**ACTIONS"):
-                in_actions = True
-                continue
-            if in_actions and ls.startswith(("* ", "- ")):
-                actions.append(self._clean_text(ls[2:]))
-            elif in_actions and not ls:
-                continue
+        passives = self._parse_bullet_section(lines, {"passive", "passives"})
+        actions = self._parse_bullet_section(lines, {"action", "actions"})
 
         if not actions:
-            actions = [self._clean_text(l[2:]) for l in lines if l.strip().startswith(("* ", "- "))]
+            actions = [
+                self._clean_text(l.strip()[2:])
+                for l in lines
+                if l.strip().startswith(("* ", "- "))
+                and self._clean_text(l.strip()[2:]) not in passives
+            ]
 
         bloodied = ""
         last_stand = ""
@@ -631,6 +662,10 @@ class VaultViewerController:
             special_actions.extend(specials_from_biome)
 
         special_actions = [self._strip_markdown(a) for a in special_actions]
+        flat_passives: List[str] = []
+        for p in passives:
+            flat_passives.extend(self._split_action_line(p))
+        passives = [self._strip_markdown(p) for p in flat_passives]
         flat_actions: List[str] = []
         for a in actions:
             flat_actions.extend(self._split_action_line(a))
@@ -654,6 +689,7 @@ class VaultViewerController:
             "size": size,
             "saves": saves,
             "flavor": biome_flavor or flavor,
+            "passives": passives,
             "actions": actions,
             "special_actions": special_actions,
             "bloodied": bloodied,

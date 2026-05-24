@@ -266,6 +266,7 @@ class MonsterTemplate:
     biome_loot: List[str]
     type: str
     biome: str
+    passives: List[str] = field(default_factory=list)
 
     # Serialization helpers for persistence
     def to_dict(self) -> Dict[str, Any]:
@@ -301,6 +302,7 @@ class MonsterInstance:
     flavor: str
     actions: List[str] = field(default_factory=list)
     special_actions: List[str] = field(default_factory=list)
+    passives: List[str] = field(default_factory=list)
     bloodied_text: str = ""
     last_stand_text: str = ""
     last_stand_hp_value: int = 0
@@ -372,6 +374,7 @@ class MonsterInstance:
             flavor=tpl.flavor,
             actions=list(tpl.actions),
             special_actions=list(tpl.special_actions),
+            passives=list(getattr(tpl, "passives", []) or []),
             bloodied_text=tpl.bloodied,
             last_stand_text=tpl.last_stand,
             last_stand_hp_value=last_stand_hp,

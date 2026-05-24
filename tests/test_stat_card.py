@@ -19,6 +19,7 @@ def make_monster(**overrides) -> MonsterInstance:
         "flavor": "A precise brass sentinel.",
         "actions": ["Slam", "1d8+2"],
         "special_actions": ["Wind Up: Gain advantage on the next strike."],
+        "passives": [],
         "bloodied_text": "",
         "last_stand_text": "",
         "last_stand_hp_value": 0,
@@ -78,7 +79,23 @@ class StatCardTests(unittest.TestCase):
 
         self.assertIn("Action 7", html)
 
+    def test_passives_render(self) -> None:
+        html = render_monster_stat_card(
+            make_monster(passives=["Sneak", "Invisible until you attack."])
+        )
+
+        self.assertIn("Passives", html)
+        self.assertIn("Sneak", html)
+
+    def test_action_detail_trigger_colons_stay_paired(self) -> None:
+        html = render_monster_stat_card(
+            make_monster(actions=["Poison Blade.", "1d8+2. On damage: Dazed."])
+        )
+
+        self.assertIn("Poison Blade", html)
+        self.assertIn("1d8+2. On damage: Dazed", html)
+        self.assertNotIn("<strong>1d8+2", html)
+
 
 if __name__ == "__main__":
     unittest.main()
-

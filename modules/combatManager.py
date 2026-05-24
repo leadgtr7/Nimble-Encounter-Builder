@@ -347,6 +347,29 @@ class CombatManager:
             self._log(f"Monster {monster.name} conditions set: {text}")
         self._changed()
 
+    def set_monster_marker(self, monster: MonsterInstance, color: str, number: int):
+        if monster not in self.monsters:
+            return
+        monster.marker_color = str(color or "").strip()
+        try:
+            monster.marker_number = max(0, int(number))
+        except (TypeError, ValueError):
+            monster.marker_number = 0
+        marker = (
+            f"{monster.marker_color} #{monster.marker_number}"
+            if monster.marker_color and monster.marker_number
+            else "none"
+        )
+        self._log(f"Monster {monster.name} marker set: {marker}")
+        self._changed()
+
+    def set_monster_group(self, monster: MonsterInstance, group: str):
+        if monster not in self.monsters:
+            return
+        monster.group = str(group or "").strip()
+        self._log(f"Monster {monster.name} group set: {monster.group or 'none'}")
+        self._changed()
+
     def reset_monster_combat_state(self, monster: MonsterInstance):
         if monster not in self.monsters:
             return

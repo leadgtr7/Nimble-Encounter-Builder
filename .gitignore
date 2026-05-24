@@ -4,3 +4,7 @@ viewer_settings.json
 build/
 .vscode/
 .claude/
+__pycache__/
+*.pyc
+tmp/
+Precompiled Exe and Library/Encounters/Combat Sheets/

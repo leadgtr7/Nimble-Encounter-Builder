@@ -448,7 +448,7 @@ class BestiaryTabController:
             self.stat_preview.clear()
             return
         tpl = self._filtered_templates[row]
-        html = render_stat_block(tpl, mode="lite")
+        html = render_stat_block(tpl, mode="full")
         self.stat_preview.setHtml(html)
 
     def _on_encounter_selection_changed(self, current_row: int, current_col: int, prev_row: int, prev_col: int) -> None:
@@ -457,7 +457,7 @@ class BestiaryTabController:
             # Don't clear the preview - keep showing the search list selection
             return
         monster = self.manager.monsters[current_row]
-        html = render_stat_block(monster, mode="lite")
+        html = render_stat_block(monster, mode="full")
         self.stat_preview.setHtml(html)
 
     # ------------------------------------------------------------------#
@@ -631,6 +631,7 @@ class BestiaryTabController:
                 monster.flavor = template.flavor
                 monster.actions = template.actions
                 monster.special_actions = template.special_actions
+                monster.passives = list(getattr(template, "passives", []) or [])
                 monster.biome_loot = template.biome_loot
                 monster.bloodied = template.bloodied
                 monster.last_stand = template.last_stand

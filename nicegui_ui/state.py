@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import random
 from dataclasses import dataclass, field
 from datetime import datetime
 from pathlib import Path
@@ -76,6 +77,20 @@ class EncounterUiState:
         self.event_log.append(f"[{stamp}] {message}")
         if len(self.event_log) > 250:
             self.event_log = self.event_log[-250:]
+
+    def load_last_session_from_config(self) -> None:
+        path = _resolve_app_path(config.CONFIG.autosave_path)
+        if not path.exists():
+            self.log("No previous session found.")
+            return
+        try:
+            self.manager.load_session(str(path))
+        except Exception as exc:  # noqa: BLE001
+            self.log(f"Could not load last session from {path}: {exc}")
+            return
+        self.log(f"Loaded last session from {path}")
+        first_monster = self.sorted_monsters()[0] if self.manager.monsters else None
+        self.select_monster_uid(self.monster_uid(first_monster) if first_monster else None)
 
     def apply_default_difficulty_profile(self) -> None:
         player_count = getattr(config.CONFIG, "default_player_count", 4)
@@ -155,10 +170,27 @@ class EncounterUiState:
         }
         return [""] + sorted(values)
 
+    def condition_options(self) -> list[str]:
+        return list(config.CONFIG.available_conditions)
+
+    def marker_color_options(self) -> dict[str, str]:
+        return {color: color for color in config.CONFIG.marker_palette}
+
     def selected_template(self) -> MonsterTemplate | None:
         if not self.selected_template_key:
             return None
         return self.template_by_key.get(self.selected_template_key)
+
+    def template_for_monster(self, monster: MonsterInstance) -> MonsterTemplate | None:
+        template_file = getattr(monster, "template_file", "")
+        if template_file:
+            for template in self.monster_library:
+                if template.file == template_file:
+                    return template
+        for template in self.monster_library:
+            if template.name == monster.name:
+                return template
+        return None
 
     @staticmethod
     def monster_uid(monster: MonsterInstance) -> str:
@@ -192,12 +224,14 @@ class EncounterUiState:
     def combat_rows(self) -> list[dict]:
         rows = []
         for monster in self.sorted_monsters():
+            uid = self.monster_uid(monster)
             marker_number = getattr(monster, "marker_number", 0)
             marker_color = getattr(monster, "marker_color", "") or ""
             status = monster_status(monster)
             rows.append(
                 {
-                    "uid": self.monster_uid(monster),
+                    "uid": uid,
+                    "selected": uid == self.selected_monster_uid,
                     "active": "Yes" if getattr(monster, "active", True) else "No",
                     "name": monster.name,
                     "group": monster.group or "",
@@ -268,6 +302,105 @@ class EncounterUiState:
                     loot.append(text)
         return loot
 
+    def refresh_monsters_from_library(self) -> int:
+        updated = 0
+        for monster in self.manager.monsters:
+            template = self.template_for_monster(monster)
+            if template is None:
+                continue
+            monster.template_file = template.file
+            monster.level = template.level
+            monster.hp_max = MonsterInstance._safe_int(template.hp, monster.hp_max)
+            if monster.hp_current > monster.hp_max:
+                monster.hp_current = monster.hp_max
+            monster.armor = template.armor
+            monster.size = template.size
+            monster.type = template.type
+            monster.speed = template.speed
+            monster.biome = template.biome
+            monster.saves = template.saves
+            monster.flavor = template.flavor
+            monster.actions = list(template.actions or [])
+            monster.special_actions = list(template.special_actions or [])
+            monster.passives = list(getattr(template, "passives", []) or [])
+            monster.biome_loot = list(template.biome_loot or [])
+            monster.bloodied_text = template.bloodied
+            monster.last_stand_text = template.last_stand
+            monster.last_stand_hp_value = MonsterInstance._safe_int(template.last_stand_hp, 0)
+            monster.legendary = template.legendary
+            updated += 1
+        if updated:
+            self.log(f"Refreshed {updated} monster(s) from library.")
+            self.manager._changed()
+        else:
+            self.log("No matching library monsters found to refresh.")
+        return updated
+
+    def add_random_encounter(
+        self,
+        count: int,
+        difficulty: str,
+        biome: str = "",
+        exclude_legendary: bool = False,
+    ) -> int:
+        if not self.monster_library:
+            self.log("Random encounter skipped: no monster library loaded.")
+            return 0
+
+        difficulty_key = (difficulty or "Medium").strip()
+        cfg = config.CONFIG
+        multipliers = {
+            "Trivial": cfg.encounter_difficulty_easy * 0.8,
+            "Easy": cfg.encounter_difficulty_easy,
+            "Medium": cfg.encounter_difficulty_medium,
+            "Hard": cfg.encounter_difficulty_hard,
+            "Deadly": cfg.encounter_difficulty_deadly_max,
+            "Very Deadly": cfg.encounter_difficulty_very_deadly,
+        }
+        multiplier = multipliers.get(difficulty_key, cfg.encounter_difficulty_medium)
+        target_total = max(0.25, self.manager.difficulty_party_total_level() * multiplier)
+        requested = max(1, int(count or 1))
+        biome_value = (biome or "").strip().lower()
+
+        candidates: list[tuple[MonsterTemplate, float]] = []
+        for template in self.monster_library:
+            if exclude_legendary and template.legendary:
+                continue
+            if biome_value and (template.biome or "").strip().lower() != biome_value:
+                continue
+            try:
+                level = self.manager._parse_level_value(template.level)
+            except (TypeError, ValueError):
+                continue
+            if level <= 0:
+                continue
+            candidates.append((template, level))
+
+        if not candidates:
+            self.log("Random encounter skipped: no matching monsters.")
+            return 0
+
+        added = 0
+        remaining_total = target_total
+        for index in range(requested):
+            remaining_slots = max(1, requested - index)
+            target_level = max(0.25, remaining_total / remaining_slots)
+            low = max(0.0, target_level * 0.5)
+            high = max(0.25, target_level * 1.5)
+            in_range = [
+                (template, level)
+                for template, level in candidates
+                if low <= level <= high
+            ] or candidates
+            template, level = random.choice(in_range)
+            group = template.biome or template.type or ""
+            monster = self.manager.add_monster_from_template(template, group=group)
+            self.select_monster_uid(self.monster_uid(monster))
+            remaining_total -= level
+            added += 1
+        self.log(f"Random encounter generated: {added} monster(s).")
+        return added
+
 
 def create_state() -> EncounterUiState:
     services = create_default_services(PROJECT_ROOT)
@@ -276,5 +409,5 @@ def create_state() -> EncounterUiState:
     manager.on_log = state.log
     state.apply_default_difficulty_profile()
     state.load_monster_library_from_config()
+    state.load_last_session_from_config()
     return state
-

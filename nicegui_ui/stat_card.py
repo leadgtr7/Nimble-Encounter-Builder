@@ -40,7 +40,11 @@ def _format_action_items(items: list[str]) -> str:
         return "<p class=\"stat-card-empty-line\">No entries.</p>"
 
     lines = []
-    paired = len(items) >= 2 and len(items) % 2 == 0 and not any(":" in item for item in items)
+    paired = (
+        len(items) >= 2
+        and len(items) % 2 == 0
+        and not any(":" in items[index] for index in range(0, len(items), 2))
+    )
     if paired:
         for index in range(0, len(items), 2):
             title = escape(items[index].strip().rstrip("."))
@@ -86,6 +90,7 @@ def render_monster_stat_card(monster: Any) -> str:
     hp_label = escape(f"{hp_current}/{hp_max}" if hp_current is not None else str(hp_max))
     temp_label = f" +{temp_hp} temp" if temp_hp else ""
 
+    passives = _as_list(_get(data, "passives", "passive", default=[]))
     specials = _as_list(_get(data, "special_actions", default=[]))
     actions = _as_list(_get(data, "actions", default=[]))
     bloodied = escape(str(_get(data, "bloodied_text", "bloodied", default="")).strip())
@@ -120,6 +125,10 @@ def render_monster_stat_card(monster: Any) -> str:
         <span><b>Speed</b> {speed}</span>
         <span><b>Saves</b> {saves}</span>
       </div>
+      <section>
+        <h3>Passives</h3>
+        {_format_action_items(passives)}
+      </section>
       <section>
         <h3>Special Actions</h3>
         {_format_action_items(specials)}

@@ -185,7 +185,7 @@ class CombatTabController:
         if monster is None:
             self.stat_preview.clear()
             return
-        html = render_stat_block(monster, mode="lite")
+        html = render_stat_block(monster, mode="full")
         self.stat_preview.setHtml(html)
 
     def _sorted_monsters(self) -> list[MonsterInstance]:

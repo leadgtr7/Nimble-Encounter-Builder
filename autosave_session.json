@@ -1,0 +1,90 @@
+{
+  "heroes": [],
+  "monsters": [
+    {
+      "name": "Rime Tongue",
+      "template_file": "",
+      "legendary": false,
+      "level": "0.25",
+      "armor": "None",
+      "speed": "6",
+      "size": "Medium",
+      "saves": "",
+      "flavor": "The water is cold enough to steal your strength, and whatever lives here does not need to hurry.",
+      "actions": [
+        "Bash.",
+        "1d4+1 Bludgeoning",
+        "Ice Spit.",
+        "(Range 3), 1d4 cold damage. DC12 WIL save or its movement speed is reduced by 2 until the end of the targets next turn."
+      ],
+      "special_actions": [],
+      "passives": [],
+      "bloodied_text": "",
+      "last_stand_text": "",
+      "last_stand_hp_value": 0,
+      "biome_loot": [
+        "Salt-encrusted coins, barnacle-covered weapons, coral-inlaid jewelry, fossilized pearls, ancient diving bells, waterproof scroll tubes, half-digested boots, frozen journals sealed in ice."
+      ],
+      "type": "Monsters",
+      "biome": "Coldwater Predators",
+      "hp_max": 8,
+      "hp_current": 8,
+      "temp_hp": 0,
+      "last_stand_triggered": false,
+      "dead": false,
+      "group": "Coldwater Predators",
+      "active": true,
+      "concentrating": false,
+      "conditions": [],
+      "notes_public": "",
+      "notes_gm": "",
+      "marker_color": "#FF0000",
+      "marker_number": 1,
+      "shown_bloodied_popup": false,
+      "shown_last_stand_popup": false
+    },
+    {
+      "name": "Goblin Minion",
+      "template_file": "",
+      "legendary": false,
+      "level": "0.25",
+      "armor": "None",
+      "speed": "6",
+      "size": "Small",
+      "saves": "",
+      "flavor": "Green, cunning, & thriving on the edge of chaos. Will mock you mercilessly if given the chance.",
+      "actions": [
+        "Stab.",
+        "1d6 (follows minion rules)."
+      ],
+      "special_actions": [
+        "Haha, Missed Me!",
+        "Whenever an attack misses you, deal 1 psychic damage in return."
+      ],
+      "passives": [],
+      "bloodied_text": "",
+      "last_stand_text": "",
+      "last_stand_hp_value": 0,
+      "biome_loot": [
+        "Live mouse (a snack for later), moldy bread, smooth stones, sharp sticks, teeth (forcibly removed), arrows (surprisingly well-made), lots of blades (jagged, but effective), dead captive (forgot to feed him), shiny junk (random shiny bits of metal, broken glass, and buttons), slug farm (a jar of slimy, wriggling slugs), \"Potion\" (suspiciously colored liquid in a dirty bottle), unidentifiable jerky. A filthy notebook tracking bizarre trades and bets, boots (too big)."
+      ],
+      "type": "Monsters",
+      "biome": "Goblins",
+      "hp_max": 1,
+      "hp_current": 1,
+      "temp_hp": 0,
+      "last_stand_triggered": false,
+      "dead": false,
+      "group": "Goblins",
+      "active": true,
+      "concentrating": false,
+      "conditions": [],
+      "notes_public": "",
+      "notes_gm": "",
+      "marker_color": "#FF0000",
+      "marker_number": 2,
+      "shown_bloodied_popup": false,
+      "shown_last_stand_popup": false
+    }
+  ]
+}
